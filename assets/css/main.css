@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-    @apply bg-light_black text-white font-sans;
+    @apply bg-white dark:bg-light_black text-light_black dark:text-white font-sans;
     padding: 0;
     margin: 0;
 }
