@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    @apply bg-light_black text-white font-sans;
+    padding: 0;
+    margin: 0;
+}
