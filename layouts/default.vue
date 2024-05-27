@@ -33,7 +33,7 @@
     </a>
 
     <div
-      class="flex items-center gap-x-16 pr-5 tracking-wide text-transparent_gray"
+      class="flex items-center font-medium text-lg gap-x-16 pr-5 tracking-wide text-transparent_gray"
     >
       <a href="#inicio" :class="{ active: activeSection === 'inicio' }"
         >Início</a
@@ -121,6 +121,6 @@ onUnmounted(() => {
 
 <style scoped>
 .active {
-  @apply text-light_black dark:text-white text-lg font-medium;
+  @apply text-light_black dark:text-white text-xl font-medium;
 }
 </style>

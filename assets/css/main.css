@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 * {
     @apply bg-white dark:bg-light_black font-sans;
     padding: 0;
