@@ -12,8 +12,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'gray': '464646',
-        'medium_gray': '939393',
+        'gray': '#464646',
+        'medium_gray': '#939393',
         'light_gray': '#C0C0C0',
         'white': '#ECECEC',
         'light_black': '#1D1D1D',
