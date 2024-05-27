@@ -8,3 +8,19 @@
     padding: 0;
     margin: 0;
 }
+
+::-webkit-scrollbar {
+    width: 12px; /* largura da barra de rolagem */
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-gray dark:bg-gray; /* cor da trilha */
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-medium_gray dark:bg-medium_gray rounded-lg;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-light_gray dark:bg-light_gray;
+}

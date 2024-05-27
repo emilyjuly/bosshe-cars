@@ -49,20 +49,7 @@
         :class="{ active: activeSection === 'fale-conosco' }"
         >Fale Conosco</a
       >
-      <Icon
-        name="heroicons:sun-16-solid"
-        color="white"
-        v-show="colorMode.preference === 'dark'"
-        class="flex cursor-pointer transition ease-in-out delay-150 hover:scale-125"
-        @click="toggleTheme"
-      />
-      <Icon
-        name="heroicons:moon-16-solid"
-        color="light_black"
-        v-show="colorMode.preference === 'light'"
-        class="flex cursor-pointer transition ease-in-out delay-150 hover:scale-125"
-        @click="toggleTheme"
-      />
+      <SwitchModeBtn />
     </div>
   </div>
   <slot />
@@ -70,6 +57,7 @@
 
 <script setup>
 import { onMounted } from "vue";
+import SwitchModeBtn from "~/components/buttons/SwitchModeBtn.vue";
 
 const colorMode = useColorMode();
 const activeSection = ref("inicio");
@@ -91,10 +79,6 @@ const smoothScroll = () => {
       });
     });
   });
-};
-
-const toggleTheme = () => {
-  colorMode.preference = colorMode.preference === "dark" ? "light" : "dark";
 };
 
 const handleScroll = () => {
