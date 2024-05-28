@@ -30,26 +30,26 @@
                     </div>
                 </div>
                 <div class="bg-light_black">
-                    <p class="text-medium_gray dark:text-medium_gray text-2xl w-96 mt-36 leading-10 bg-light_black">
+                    <p class="text-medium_gray dark:text-medium_gray text-2xl w-96 mt-20 leading-10 bg-light_black">
                         Há duas décadas, somos referência em Vale Verde.
                         Oferecemos os melhores carros importados e os últimos modelos,
                         incluindo elétricos. Compre veículos novos e semi novos
                         com financiamento facilitado. Descubra a qualidade que você merece.
                     </p>
-                    <span class="flex items-center gap-2 text-white dark:text-white text-xl font-semibold mt-32 bg-light_black">
+                    <span class="flex items-center gap-2 text-white dark:text-white text-xl font-semibold mt-16 bg-light_black">
                         <Icon name="heroicons:map-pin-16-solid" class="bg-light_black" />
                         <span class="bg-light_black">Vila Verde, Avenida das Estrelas, 23.</span>
                     </span>
                 </div>
             </div>
             <div class="h-screen w-1/2 bg-white dark:bg-white">
-                <p class="importados relative transform top-36 -left-36 rotate-90 inline-block tracking-wide text-5xl font-extrabold bg-transparent dark:bg-transparent">IMPORTADOS</p>
+                <p class="importados relative transform rotate-90 inline-block tracking-wide text-3xl font-extrabold bg-transparent dark:bg-transparent">IMPORTADOS</p>
                 <img
-                    class="z-20 dark:bg-transparent bg-transparent relative top-24 right-80"
+                    class="z-20 dark:bg-transparent bg-transparent relative top-20 right-80"
                     src="../../assets/images/renault-kwid.svg"
                     alt="Renault Kwid Elétrico"
                 />
-                <p class="eletricos relative transform -bottom-24 -left-44 -rotate-90 inline-block tracking-wide text-5xl font-extrabold bg-transparent dark:bg-transparent">ELÉTRICOS</p>
+                <p class="eletricos relative transform -rotate-90 inline-block tracking-wide text-3xl font-extrabold bg-transparent dark:bg-transparent">ELÉTRICOS</p>
             </div>
         </div>
     </div>
@@ -79,12 +79,17 @@ const numbers = [
 
 <style scoped>
 .importados {
-    @apply text-white;
+    @apply text-transparent;
+    top: 100px;
+    left: -6rem;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: black;
 }
 
 .eletricos {
+    @apply text-transparent;
+    bottom: -10px;
+    left: -116px;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: white;
 }

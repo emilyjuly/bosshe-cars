@@ -37,7 +37,7 @@
             alt="Palavras sobre a imagem do carro"
         />
         <p
-            class="absolute z-20 ml-4 text-lg text-gray dark:text-medium_gray font-medium tracking-widest w-1/4 bottom-0 left-0"
+            class="absolute z-20 ml-4 text-lg text-gray dark:text-medium_gray font-medium tracking-widest w-80 bottom-0 left-0"
             style="background: transparent"
         >
             Trabalhamos com as melhores marcas do mercado automotivo para oferecer
