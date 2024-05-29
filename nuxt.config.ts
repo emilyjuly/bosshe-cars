@@ -13,9 +13,6 @@ export default defineNuxtConfig({
     devtools: {enabled: false},
     css: [
         "~/assets/css/main.css",
-        "primevue/resources/themes/saga-blue/theme.css",
-        "primevue/resources/primevue.min.css",
-        "primeicons/primeicons.css",
     ],
     postcss: {
         plugins: {

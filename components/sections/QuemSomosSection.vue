@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="h-full">
         <div class="w-full h-52 p-12 flex justify-between">
             <img
                 class="w-16"
@@ -9,47 +9,45 @@
                 :key="marca.name"
             />
         </div>
-        <div class="flex w-full">
-            <div class="h-screen w-1/2 pl-20 pr-20 bg-light_black">
-                <div class="flex justify-between mt-24 bg-light_black items-center text-white dark:text-white">
-                    <div class="flex flex-col items-center bg-light_black">
-                        <p class="font-black text-3xl bg-light_black">20+</p>
-                        <p class="font-bold text-lg bg-light_black">MODELOS</p>
+        <div class="h-5/6 flex w-full">
+            <div class="w-1/2 pl-20 pr-20 text-light_black dark:text-white bg-white dark:bg-light_black">
+                <div class="flex justify-between mt-24 items-center ">
+                    <div class="flex flex-col items-center">
+                        <p class="font-black text-3xl">20+</p>
+                        <p class="font-bold text-lg">MODELOS</p>
                     </div>
-                    <div class="w-0.5 h-16 -translate-x-2/4 bg-light_gray dark:bg-light_gray"></div>
+                    <div class="w-0.5 h-16 -translate-x-2/4 dark:bg-medium_gray bg-light_gray"></div>
 
-                    <div class="flex flex-col items-center bg-light_black">
-                        <p class="font-black text-3xl bg-light_black">10000+</p>
-                        <p class="font-bold text-lg bg-light_black">CLIENTES</p>
+                    <div class="flex flex-col items-center">
+                        <p class="font-black text-3xl">10000+</p>
+                        <p class="font-bold text-lg">CLIENTES</p>
                     </div>
-                    <div class="w-0.5 h-16 -translate-x-2/4 bg-light_gray dark:bg-light_gray"></div>
+                    <div class="w-0.5 h-16 -translate-x-2/4 dark:bg-medium_gray bg-light_gray"></div>
 
-                    <div class="flex flex-col items-center bg-light_black">
-                        <p class="font-black text-3xl bg-light_black">10+</p>
-                        <p class="font-bold text-lg bg-light_black">MARCAS</p>
+                    <div class="flex flex-col items-center">
+                        <p class="font-black text-3xl">10+</p>
+                        <p class="font-bold text-lg">MARCAS</p>
                     </div>
                 </div>
-                <div class="bg-light_black">
-                    <p class="text-medium_gray dark:text-medium_gray text-2xl w-96 mt-20 leading-10 bg-light_black">
+                <div>
+                    <p class="text-gray dark:text-medium_gray text-2xl w-96 mt-20 leading-10">
                         Há duas décadas, somos referência em Vale Verde.
                         Oferecemos os melhores carros importados e os últimos modelos,
                         incluindo elétricos. Compre veículos novos e semi novos
                         com financiamento facilitado. Descubra a qualidade que você merece.
                     </p>
-                    <span class="flex items-center gap-2 text-white dark:text-white text-xl font-semibold mt-16 bg-light_black">
-                        <Icon name="heroicons:map-pin-16-solid" class="bg-light_black" />
-                        <span class="bg-light_black">Vila Verde, Avenida das Estrelas, 23.</span>
+                    <span class="flex items-center gap-2 text-light_black dark:text-white text-xl font-semibold mt-16">
+                        <Icon name="heroicons:map-pin-16-solid" />
+                        <span>Vila Verde, Avenida das Estrelas, 23.</span>
                     </span>
                 </div>
             </div>
-            <div class="h-screen w-1/2 bg-white dark:bg-white">
-                <p class="importados relative transform rotate-90 inline-block tracking-wide text-3xl font-extrabold bg-transparent dark:bg-transparent">IMPORTADOS</p>
+            <div class="w-1/2 bg-white dark:bg-white">
                 <img
                     class="z-20 dark:bg-transparent bg-transparent relative top-20 right-80"
                     src="../../assets/images/renault-kwid.svg"
                     alt="Renault Kwid Elétrico"
                 />
-                <p class="eletricos relative transform -rotate-90 inline-block tracking-wide text-3xl font-extrabold bg-transparent dark:bg-transparent">ELÉTRICOS</p>
             </div>
         </div>
     </div>
@@ -69,28 +67,4 @@ const marcas = [
     {name: 'Nissan', src: nissanImage},
     {name: 'Citroen', src: citroenImage},
 ];
-
-const numbers = [
-    { number: '+20', text: 'MODELOS' },
-    { number: '+10000', text: 'CLIENTES' },
-    { number: '+10', text: 'MARCAS' },
-]
 </script>
-
-<style scoped>
-.importados {
-    @apply text-transparent;
-    top: 100px;
-    left: -6rem;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: black;
-}
-
-.eletricos {
-    @apply text-transparent;
-    bottom: -10px;
-    left: -116px;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: white;
-}
-</style>
