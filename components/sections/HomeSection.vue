@@ -1,53 +1,31 @@
 <template>
-    <div>
-        <img
-            class="absolute top-0 right-0 h-full object-cover w-3/4"
-            :src="imagePath"
-            alt="Imagem de um carro"
-        />
+    <div class="flex h-screen w-screen bg-white dark:bg-light_black">
+        <div class="flex flex-col w-2/5 items-center justify-center relative dark:light_black">
+            <img :src="imagePathPalavras" alt="Palavras sobre a imagem do carro" class="w-1/2" />
+            <p class="text-lg text-gray dark:text-medium_gray font-medium tracking-widest absolute bottom-0 p-4">
+                Trabalhamos com as melhores marcas do mercado automotivo para oferecer
+                uma excelente experiência a todos os nossos clientes
+            </p>
+        </div>
+        <img class="h-full w-3/5 object-cover" :src="imagePath" alt="Imagem de um carro" />
         <template v-for="btn in btns" :key="btn.value">
-            <Button
-                :class="[
-                            'pulse-animation p-4 absolute z-30',
-                            btn.btnPosition,
-                            store.btnClicked === btn.value ? 'bg-gray text-white dark:bg-transparent_gray dark:text-white' : 'bg-light_black text-white dark:bg-white dark:text-light_black'
-                        ]"
-                rounded
-                aria-label="tooltip"
-                @click="store.handleClick(btn.value)"
-            >
-                <Icon
-                    class="text-2xl bg-transparent dark:bg-transparent font-medium"
-                    name="heroicons:plus-16-solid"
-                />
+            <Button :class="[
+                'pulse-animation p-4 absolute z-30',
+                btn.btnPosition,
+                store.btnClicked === btn.value ? 'bg-gray text-white dark:bg-transparent_gray dark:text-white' : 'bg-light_black text-white dark:bg-white dark:text-light_black'
+            ]" rounded aria-label="tooltip" @click="store.handleClick(btn.value)">
+                <Icon class="text-2xl bg-transparent dark:bg-transparent font-medium" name="heroicons:plus-16-solid" />
             </Button>
-            <div
-                v-if="store.btnClicked === btn.value"
-                :class="`absolute ${btn.divClass} text-base bg-gray text-white dark:font-medium dark:bg-transparent_gray dark:text-white p-4 rounded-lg shadow-lg`"
-            >
+            <div v-if="store.btnClicked === btn.value"
+                :class="`absolute ${btn.divClass} text-base bg-gray text-white dark:font-medium dark:bg-transparent_gray dark:text-white p-4 rounded-lg shadow-lg`">
                 {{ btn.divPhrase }}
             </div>
         </template>
     </div>
-    <div>
-        <img
-            class="absolute z-20"
-            style="top: 10rem; left: 14rem; background-color: transparent"
-            :src="imagePathPalavras"
-            alt="Palavras sobre a imagem do carro"
-        />
-        <p
-            class="absolute z-20 text-lg text-gray dark:text-medium_gray font-medium tracking-widest bottom-10 left-5"
-            style="background: transparent; width: 25%"
-        >
-            Trabalhamos com as melhores marcas do mercado automotivo para oferecer
-            uma excelente experiência a todos os nossos clientes
-        </p>
-    </div>
 </template>
 
 <script setup lang="ts">
-import {useHomePageBtnsStore} from "~/stores/HomePageBtns";
+import { useHomePageBtnsStore } from "~/stores/HomePageBtns";
 
 import darkImage from "../../assets/images/carro-pagina-inicial-dark.svg";
 import lightImage from "../../assets/images/carro-pagina-inicial-light.svg";
@@ -92,10 +70,13 @@ const imagePathPalavras = computed(() => {
 
 <style scoped>
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
         opacity: 1;
     }
+
     50% {
         transform: scale(1.1);
         opacity: 0.7;

@@ -1,15 +1,15 @@
 <template>
-    <div>
-        <section class="h-screen" id="inicio">
+    <div class="flex flex-col">
+        <section id="inicio">
             <HomeSection />
         </section>
-        <section class="h-screen" id="quem-somos">
+        <!-- <section class="h-screen" id="quem-somos">
             <QuemSomosSection />
         </section>
         <section class="h-screen" id="catalogo">
             <CatalogoSection />
         </section>
-        <section class="h-screen" id="fale-conosco"></section>
+        <section class="h-screen" id="fale-conosco"></section> -->
     </div>
 </template>
 

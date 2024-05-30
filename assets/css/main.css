@@ -14,11 +14,11 @@
 }
 
 ::-webkit-scrollbar {
-    width: 12px; /* largura da barra de rolagem */
+    width: 12px; 
 }
 
 ::-webkit-scrollbar-track {
-    @apply bg-gray dark:bg-gray; /* cor da trilha */
+    @apply bg-gray dark:bg-gray;
 }
 
 ::-webkit-scrollbar-thumb {
