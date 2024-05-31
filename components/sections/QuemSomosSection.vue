@@ -10,7 +10,7 @@
             />
         </div>
         <div class="h-5/6 flex">
-            <div class="w-1/2 px-20 dark:text-white dark:bg-light_black">
+            <div class="w-1/2 px-20 text-light_black dark:text-white dark:bg-light_black">
                 <div class="flex justify-between mt-24 items-center">
                     <div class="flex flex-col items-center">
                         <p class="font-black text-3xl ">20+</p>

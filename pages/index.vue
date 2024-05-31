@@ -9,7 +9,9 @@
           <section class="flex flex-col" id="catalogo">
              <CatalogoSection />
          </section>
-         <section class="flex flex-col" id="fale-conosco"></section>
+         <section class="flex flex-col" id="fale-conosco">
+             <FaleConoscoSection />
+         </section>
     </div>
 </template>
 
@@ -17,6 +19,7 @@
 import HomeSection from "~/components/sections/HomeSection.vue";
 import QuemSomosSection from "~/components/sections/QuemSomosSection.vue";
 import CatalogoSection from "~/components/sections/CatalogoSection.vue";
+import FaleConoscoSection from "~/components/sections/FaleConoscoSection.vue";
 
 
 </script>
