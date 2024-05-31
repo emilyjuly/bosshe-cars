@@ -1,8 +1,8 @@
 <template>
-    <div class="flex h-screen w-screen bg-white dark:bg-light_black">
+    <div class="flex h-screen w-full bg-white dark:bg-light_black">
         <div class="flex flex-col w-2/5 items-center justify-center relative dark:light_black">
-            <img :src="imagePathPalavras" alt="Palavras sobre a imagem do carro" class="w-1/2" />
-            <p class="text-lg text-gray dark:text-medium_gray font-medium tracking-widest absolute bottom-0 p-4">
+            <img :src="imagePathPalavras" alt="Palavras sobre a imagem do carro"/>
+            <p class="text-lg text-gray dark:text-medium_gray font-medium tracking-widest absolute bottom-4 p-4">
                 Trabalhamos com as melhores marcas do mercado automotivo para oferecer
                 uma excelente experiência a todos os nossos clientes
             </p>

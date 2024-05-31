@@ -3,13 +3,13 @@
         <section id="inicio">
             <HomeSection />
         </section>
-        <!-- <section class="h-screen" id="quem-somos">
+        <section class="flex flex-col" id="quem-somos">
             <QuemSomosSection />
         </section>
-        <section class="h-screen" id="catalogo">
-            <CatalogoSection />
-        </section>
-        <section class="h-screen" id="fale-conosco"></section> -->
+          <section class="flex flex-col" id="catalogo">
+             <CatalogoSection />
+         </section>
+         <section class="flex flex-col" id="fale-conosco"></section>
     </div>
 </template>
 
