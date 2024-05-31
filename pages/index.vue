@@ -12,6 +12,7 @@
          <section class="flex flex-col" id="fale-conosco">
              <FaleConoscoSection />
          </section>
+        <Footer />
     </div>
 </template>
 
