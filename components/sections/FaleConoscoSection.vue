@@ -1,27 +1,19 @@
 <template>
-    <div class="h-screen w-full flex flex-col items-center">
-        <p class="text-gray-700 text-light_black dark:text-medium_gray font-medium text-lg mt-24">Preencha seus dados, e entraremos em contato</p>
-        <div class="flex w-1/2 gap-y-12 flex-col text-light_black dark:text-medium_gray font-medium tracking-wide text-base mt-16">
+    <div class="h-auto w-full flex flex-col items-center">
+        <p class="text-light_black dark:text-medium_gray font-medium text-lg mt-24">Preencha seus dados, e
+            entraremos em contato</p>
+        <div
+            class="flex w-1/2 gap-y-12 flex-col text-light_black dark:text-medium_gray font-medium tracking-wide text-base mt-16">
             <div class="flex flex-col gap-2">
                 <label for="fullname">* NOME COMPLETO</label>
-                <InputText
-                    class="border-2 p-2 h-10 border-medium_gray rounded-none"
-                    id="fullname"
-                    v-model="fullname"
-                    aria-describedby="fullname"
-                />
+                <InputText class="border-2 p-2 h-10 border-medium_gray rounded-none" id="fullname" v-model="fullname"
+                    aria-describedby="fullname" />
             </div>
 
             <div class="flex flex-col gap-2">
                 <label for="phone">* CONTATO</label>
-                <InputMask
-                    class="border-2 p-2 h-10 border-medium_gray rounded-none"
-                    id="phone"
-                    v-model="phone"
-                    aria-describedby="phone"
-                    mask="(XX) XXXX-XXXXX"
-                    placeholder="(XX) XXXX-XXXXX"
-                />
+                <InputMask class="border-2 p-2 h-10 border-medium_gray rounded-none" id="phone" v-model="phone"
+                    aria-describedby="phone" mask="(XX) XXXX-XXXXX" placeholder="(XX) XXXX-XXXXX" />
             </div>
 
             <div class="flex items-center">
@@ -32,25 +24,14 @@
             <template v-if="simular">
                 <div class="flex flex-col gap-2">
                     <label for="cpf">* CPF</label>
-                    <InputMask
-                        class="border-2 p-2 h-10 border-medium_gray rounded-none"
-                        id="cpf"
-                        v-model="cpf"
-                        aria-describedby="cpf"
-                        mask="000.000.000-00"
-                        placeholder="000.000.000-00"
-                    />
+                    <InputMask class="border-2 p-2 h-10 border-medium_gray rounded-none" id="cpf" v-model="cpf"
+                        aria-describedby="cpf" mask="000.000.000-00" placeholder="000.000.000-00" />
                 </div>
 
                 <div class="flex flex-col gap-2">
                     <label for="valorEntrada">VALOR DE ENTRADA</label>
-                    <InputText
-                        class="border-2 p-2 h-10 border-medium_gray rounded-none"
-                        id="valor_entrada"
-                        v-model="valorEntrada"
-                        aria-describedby="valorEntrada"
-                        placeholder="R$"
-                    />
+                    <InputText class="border-2 p-2 h-10 border-medium_gray rounded-none" id="valor_entrada"
+                        v-model="valorEntrada" aria-describedby="valorEntrada" placeholder="R$" />
                 </div>
 
                 <div class="flex items-center">
@@ -62,7 +43,7 @@
             <p>* Indica que o campo é obrigatório.</p>
 
             <button
-                class="tracking-wider transition duration-200 mt-1 text-base font-bold bg-transparent_gray dark:bg-transparent_gray px-5 py-2 w-56 text-light_black dark:text-white self-end">
+                class="tracking-wider dark:hover:bg-gray hover:bg-gray hover:text-white transition duration-200 mt-1 text-base font-bold bg-transparent_gray dark:bg-transparent_gray px-5 py-2 w-56 text-light_black dark:text-white self-end">
                 ENVIAR
             </button>
         </div>

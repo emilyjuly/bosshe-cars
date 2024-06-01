@@ -1,13 +1,8 @@
 <template>
-    <div class="flex flex-col h-screen w-full bg-white dark:bg-light_black">
+    <div class="flex flex-col h-auto w-full bg-white dark:bg-light_black">
         <div class="h-52 p-12 flex justify-between">
-            <img
-                class="w-16"
-                v-for="marca in marcas"
-                :src="marca.src"
-                :alt="`Símbolo da ${marca.name}`"
-                :key="marca.name"
-            />
+            <img class="w-16" v-for="marca in marcas" :src="marca.src" :alt="`Símbolo da ${marca.name}`"
+                :key="marca.name" />
         </div>
         <div class="h-5/6 flex">
             <div class="w-1/2 px-20 text-light_black dark:text-white dark:bg-light_black">
@@ -39,17 +34,14 @@
                         com financiamento facilitado. Descubra a qualidade que você merece.
                     </p>
                     <span class="flex items-center gap-2 text-light_black dark:text-white text-xl font-semibold mt-16">
-                        <Icon name="heroicons:map-pin-16-solid"/>
+                        <Icon name="heroicons:map-pin-16-solid" />
                         <span>Vila Verde, Avenida das Estrelas, 23.</span>
                     </span>
                 </div>
             </div>
             <div class="w-1/2 bg-white dark:bg-white">
-                <img
-                    class="dark:bg-transparent bg-transparent relative top-20 right-80"
-                    src="../../assets/images/renault-kwid.svg"
-                    alt="Renault Kwid Elétrico"
-                />
+                <img class="dark:bg-transparent bg-transparent relative top-20 right-80"
+                    src="../../assets/images/renault-kwid.svg" alt="Renault Kwid Elétrico" />
             </div>
         </div>
     </div>
@@ -63,10 +55,10 @@ import nissanImage from "../assets/images/nissan.svg";
 import citroenImage from "../assets/images/citroen.svg";
 
 const marcas = [
-    {name: 'Honda', src: hondaImage},
-    {name: 'Renault', src: renaultImage},
-    {name: 'Hyundai', src: hyundaiImage},
-    {name: 'Nissan', src: nissanImage},
-    {name: 'Citroen', src: citroenImage},
+    { name: 'Honda', src: hondaImage },
+    { name: 'Renault', src: renaultImage },
+    { name: 'Hyundai', src: hyundaiImage },
+    { name: 'Nissan', src: nissanImage },
+    { name: 'Citroen', src: citroenImage },
 ];
 </script>

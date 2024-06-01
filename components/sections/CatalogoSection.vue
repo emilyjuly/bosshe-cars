@@ -1,28 +1,23 @@
 <template>
-    <div class="h-screen w-full flex flex-col items-center">
+    <div class="h-auto w-full flex flex-col items-center">
         <p class="text-light_black dark:text-white font-black tracking-wide text-4xl dark:text-white mt-20">
             NOSSA COLEÇÃO DE CARROS
         </p>
-        <p
-            class="text-gray dark:text-medium_gray font-medium text-base text-center mt-2"
-        >
+        <p class="text-gray dark:text-medium_gray font-medium text-base text-center mt-2">
             Explore e Descubra Nossa Exclusiva Coleção de Carros!
         </p>
         <div class="text-white dark:text-white justify-center flex">
             <TabView class="tabview-custom flex flex-col items-center mt-5" v-model:activeIndex="activeTab">
                 <TabPanel v-for="(tab, index) in tabs" :key="index">
                     <template #header>
-                        <span :class="{ active: activeTab === index }" class="flex transition duration-300 text-medium_gray dark:text-medium_gray text-xl font-bold mx-32 mb-10">
+                        <span :class="{ active: activeTab === index }"
+                            class="flex transition duration-300 text-medium_gray dark:text-medium_gray text-xl font-bold mx-32 mb-10">
                             {{ tab }}
                         </span>
                     </template>
                     <div class="grid grid-cols-3 gap-x-48 gap-y-10">
                         <template v-for="car in filteredCars" :key="car.name">
-                            <CarCard
-                                :image-src="car.image"
-                                :price="car.price"
-                                :carName="car.name"
-                            />
+                            <CarCard :image-src="car.image" :price="car.price" :carName="car.name" />
                         </template>
                     </div>
                 </TabPanel>
