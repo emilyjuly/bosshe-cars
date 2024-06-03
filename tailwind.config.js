@@ -18,6 +18,7 @@ export default {
         'white': '#ECECEC',
         'light_black': '#1D1D1D',
         'transparent_gray': 'rgba(148, 148, 148, 0.76)',
+        'transparent_beige': 'rgba(197, 171, 148, 0.60)',
         'beige': '#C5AC94',
         'transparent_black': 'rgba(24, 24, 24, 0.38)',
       },

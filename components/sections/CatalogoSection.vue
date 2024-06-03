@@ -23,12 +23,14 @@
                 </TabPanel>
             </TabView>
         </div>
+        <ShopCartBtn v-if="store.shopCart.length > 0" />
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import CarCard from "~/components/cards/CarCard.vue";
+import { useShopCartStore } from "~/stores/ShopCart";
 
 import captur from "../../assets/images/catalogo/suv/captur.svg"
 import kona from "../../assets/images/catalogo/suv/kona.svg"
@@ -57,9 +59,11 @@ import elevate from "../../assets/images/catalogo/4x4/elevate.svg"
 import frontier from "../../assets/images/catalogo/4x4/frontier.svg"
 import c34 from "../../assets/images/catalogo/4x4/c3.svg"
 import creta from "../../assets/images/catalogo/4x4/creta.svg"
+import ShopCartBtn from "~/components/buttons/ShopCartBtn.vue";
 
 const tabs = ref(['SUV', 'SEDAN', 'HATCH', '4 X 4']);
 const activeTab = ref(0);
+const store = useShopCartStore()
 
 const cars = {
     suv: [
