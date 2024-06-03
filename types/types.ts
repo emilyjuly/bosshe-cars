@@ -1,3 +1,12 @@
+export const formDataDefault: FormData = {
+    fullname: { value: '', error: '' },
+    phone: { value: '', error: '' },
+    simular: { value: false, error: '' },
+    cpf: { value: '', error: '' },
+    valorEntrada: { value: '', error: '' },
+    cnh: { value: false, error: '' },
+}
+
 export type FormDataProp<T> = {
     value: T;
     error: string;

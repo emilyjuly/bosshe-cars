@@ -40,7 +40,7 @@
                     type="checkbox"
                     v-model="formData.simular.value"
                     aria-label="Deseja simular um financiamento?"
-                    class="checkbox-custom" />
+                    class="checkbox-custom"/>
                 <label
                     for="simular"
                     class="ml-2 tracking-wider"
@@ -74,7 +74,7 @@
                         v-model="formData.valorEntrada.value"
                         aria-label="valorEntrada"
                         class="input"
-                        placeholder="R$" />
+                        placeholder="R$"/>
                 </div>
 
                 <div class="flex items-center">
@@ -94,19 +94,35 @@
             <p>* Indica que o campo é obrigatório.</p>
 
             <button
-                class="tracking-wider send-btn mt-1 text-base font-bold px-5 py-2 w-56 self-end"
+                class="tracking-wider send-btn mt-1 px-5 py-2 w-56 self-end"
                 @click="validateForm"
             >
-                ENVIAR
+                <template v-if="loading">
+                    <div class="loaderContainer">
+                        <div class="particleContainer">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="particleContainer">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </template>
+                <template v-else>
+                    <span class="text-base font-bold dark:bg-transparent bg-transparent"> ENVIAR </span>
+                </template>
             </button>
         </div>
-        <NotificationCard :message="notificationMessage" :type="notificationType" v-show="showNotification" />
+        <NotificationCard :message="notificationMessage" :type="notificationType" v-show="showNotification"/>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import type { FormData } from '~/types/types';
+import {ref} from 'vue';
+import type {FormData} from '~/types/types';
 import NotificationCard from "~/components/cards/NotificationCard.vue";
 
 const errorMessage: string = 'Esse campo é obrigatório';
@@ -114,15 +130,18 @@ const errorMessage: string = 'Esse campo é obrigatório';
 const showNotification = ref<boolean>(false)
 const notificationType = ref<string>('')
 const notificationMessage = ref<string>('')
+const loading = ref<boolean>(false)
 
-const formData = ref<FormData>({
-    fullname: { value: '', error: '' },
-    phone: { value: '', error: '' },
-    simular: { value: false, error: '' },
-    cpf: { value: '', error: '' },
-    valorEntrada: { value: '', error: '' },
-    cnh: { value: false, error: '' },
-});
+const formDataDefault: FormData = {
+    fullname: {value: '', error: ''},
+    phone: {value: '', error: ''},
+    simular: {value: false, error: ''},
+    cpf: {value: '', error: ''},
+    valorEntrada: {value: '', error: ''},
+    cnh: {value: false, error: ''},
+}
+
+const formData = ref<FormData>({...formDataDefault});
 
 const check = (prop: keyof FormData) => {
     const field = formData.value[prop]
@@ -134,7 +153,7 @@ const check = (prop: keyof FormData) => {
     return true
 }
 
-const validateForm = () => {
+const validateForm = async () => {
     const simular: boolean = formData.value.simular.value
     let isValid: boolean = false
 
@@ -144,21 +163,52 @@ const validateForm = () => {
 
 
     if (!isValid) {
-        notificationMessage.value = 'Por favor preencha todos os campos obrigatórios.'
-        notificationType.value = 'error'
-        showNotification.value = true
-        setTimeout(() => {
-            showNotification.value = false
-        }, 3000)
+        showNotificationMessage('Por favor preencha todos os campos obrigatórios.', 'error')
     } else {
-        notificationMessage.value = 'Formulário enviado com sucesso!'
-        notificationType.value = 'success'
-        showNotification.value = true
-        setTimeout(() => {
-            showNotification.value = false
-        }, 3000)
+        try {
+            loading.value = true
+            const response = await fetch('/api/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    fullname: formData.value.fullname.value,
+                    phone: formData.value.phone.value,
+                    simular: formData.value.simular.value,
+                    cpf: formData.value.cpf.value,
+                    valorEntrada: formData.value.valorEntrada.value,
+                    cnh: formData.value.cnh.value,
+                }),
+            });
+
+            const result = await response.json();
+            if (result.error) {
+                showNotificationMessage('Ocorreu um erro ao enviar o formulário, tente novamente.', 'error')
+                formData.value = { ...formDataDefault }
+                loading.value = false
+            } else {
+                showNotificationMessage('Formulário enviado com sucesso!', 'success')
+                formData.value = { ...formDataDefault }
+                loading.value = false
+            }
+        } catch (error) {
+            showNotificationMessage('Ocorreu um erro ao enviar o formulário, tente novamente.', 'error')
+            formData.value = { ...formDataDefault }
+            loading.value = false
+        }
     }
 };
+
+const showNotificationMessage = (msg: string, type: string) => {
+    notificationMessage.value = msg
+    notificationType.value = type
+    showNotification.value = true
+    setTimeout(() => {
+        showNotification.value = false
+    }, 3000)
+}
+
 </script>
 
 <style scoped>
@@ -194,5 +244,59 @@ const validateForm = () => {
 
 .checkbox-custom:checked::before {
     display: block;
+}
+
+.loaderContainer {
+    display: flex;
+    overflow: hidden;
+    gap: 0.5em;
+    background: transparent;
+}
+
+.particleContainer {
+    display: flex;
+    gap: 0.5em;
+    animation: slide 2000ms linear infinite;
+    background: transparent;
+}
+
+.particleContainer div {
+    width: 1.5em;
+    aspect-ratio: 1;
+    background: white;
+    transform-origin: left bottom;
+    animation: squeeze 750ms ease-in-out infinite;
+}
+
+.particleContainer div:nth-child(2) {
+    animation-delay: 50ms;
+}
+
+.particleContainer div:last-child {
+    animation-delay: 100ms;
+}
+
+@keyframes squeeze {
+    0% {
+        transform: scale(1) translateY(0);
+    }
+    50% {
+        transform: scale(0.75);
+    }
+    75% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: sclae(1);
+    }
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(calc(-50% + 1.25em));
+    }
 }
 </style>
