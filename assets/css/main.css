@@ -28,3 +28,23 @@
 ::-webkit-scrollbar-thumb:hover {
     @apply bg-light_gray dark:bg-light_gray;
 }
+
+.regular-container {
+    @apply h-auto w-full flex flex-col items-center;
+}
+
+.subtitle {
+    @apply text-light_black dark:text-medium_gray font-medium text-lg;
+}
+
+.label {
+    @apply text-light_black dark:text-medium_gray font-medium tracking-wide text-base;
+}
+
+.input {
+    @apply border-2 p-2 h-10 border-medium_gray rounded-none;
+}
+
+.send-btn {
+    @apply dark:hover:bg-gray hover:bg-gray hover:text-white transition duration-200 bg-transparent_gray dark:bg-transparent_gray text-light_black dark:text-white;
+}

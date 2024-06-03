@@ -1,9 +1,9 @@
 <template>
-    <div class="h-auto w-full flex flex-col items-center">
+    <div class="regular-container">
         <p class="text-light_black dark:text-white font-black tracking-wide text-4xl dark:text-white mt-20">
             NOSSA COLEÇÃO DE CARROS
         </p>
-        <p class="text-gray dark:text-medium_gray font-medium text-base text-center mt-2">
+        <p class="subtitle text-center mt-2">
             Explore e Descubra Nossa Exclusiva Coleção de Carros!
         </p>
         <div class="text-white dark:text-white justify-center flex">
