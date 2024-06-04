@@ -1,21 +1,21 @@
 <template>
     <div class="regular-container">
-        <p class="text-light_black dark:text-white font-black tracking-wide text-4xl dark:text-white mt-20">
+        <p class="text-color regular-title mt-20">
             NOSSA COLEÇÃO DE CARROS
         </p>
         <p class="subtitle text-center mt-2">
             Explore e Descubra Nossa Exclusiva Coleção de Carros!
         </p>
-        <div class="text-white dark:text-white justify-center flex">
-            <TabView class="tabview-custom flex flex-col items-center mt-5" v-model:activeIndex="activeTab">
+        <div>
+            <TabView class="tabview-custom flex-col-center mt-5" v-model:activeIndex="activeTab">
                 <TabPanel v-for="(tab, index) in tabs" :key="index">
                     <template #header>
                         <span :class="{ active: activeTab === index }"
-                            class="flex transition duration-300 text-medium_gray dark:text-medium_gray text-xl font-bold mx-32 mb-10">
+                            class="flex regular-transition text-medium_gray dark:text-medium_gray text-xl font-bold mx-32 mb-10">
                             {{ tab }}
                         </span>
                     </template>
-                    <div class="grid grid-cols-3 gap-x-48 gap-y-10">
+                    <div class="regular-grid">
                         <template v-for="car in filteredCars" :key="car.name">
                             <CarCard :image-src="car.image" :price="car.price" :carName="car.name" />
                         </template>

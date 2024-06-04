@@ -1,8 +1,8 @@
 <template>
-    <div class="flex h-screen w-full bg-white dark:bg-light_black">
-        <div class="flex flex-col w-2/5 items-center justify-center relative dark:light_black">
+    <div class="flex h-screen w-full regular-bg">
+        <div class="flex-col-center w-2/5 relative regular-bg">
             <img :src="imagePathPalavras" alt="Palavras sobre a imagem do carro" />
-            <p class="text-lg text-gray dark:text-medium_gray font-medium tracking-widest absolute bottom-4 p-4">
+            <p class="regular-text text-color-gray absolute bottom-4 p-4">
                 Trabalhamos com as melhores marcas do mercado automotivo para oferecer
                 uma excelente experiência a todos os nossos clientes
             </p>
@@ -12,7 +12,7 @@
             <Button :class="[
                 'pulse-animation p-4 absolute z-30',
                 btn.btnPosition,
-                store.btnClicked === btn.value ? 'bg-gray text-white dark:bg-transparent_gray dark:text-white' : 'bg-light_black text-white dark:bg-white dark:text-light_black'
+                store.btnClicked === btn.value ? 'white-text regular-bg-gray' : 'bg-light_black text-white dark:bg-white dark:text-light_black'
             ]" rounded aria-label="tooltip" @click="store.handleClick(btn.value)">
                 <Icon class="text-2xl bg-transparent dark:bg-transparent font-medium" name="heroicons:plus-16-solid" />
             </Button>
@@ -24,17 +24,17 @@
     </div>
 </template>
 
-<script setup lang="ts">
-import { useHomePageBtnsStore } from "~/stores/HomePageBtns";
+<script setup lang='ts'>
+import { useHomePageBtnsStore } from '~/stores/HomePageBtns'
 
-import darkImage from "../../assets/images/carro-pagina-inicial-dark.svg";
-import lightImage from "../../assets/images/carro-pagina-inicial-light.svg";
+import darkImage from '../../assets/images/carro-pagina-inicial-dark.svg'
+import lightImage from '../../assets/images/carro-pagina-inicial-light.svg'
 
-import darkImagePalavras from "../../assets/images/palavras-inicio-dark.svg";
-import lightImagePalavras from "../../assets/images/palavras-inicio-light.svg";
+import darkImagePalavras from '../../assets/images/palavras-inicio-dark.svg'
+import lightImagePalavras from '../../assets/images/palavras-inicio-light.svg'
 
-const colorMode = useColorMode();
-const store = useHomePageBtnsStore();
+const colorMode = useColorMode()
+const store = useHomePageBtnsStore()
 
 const btns = [
     {
@@ -58,14 +58,14 @@ const btns = [
 ]
 
 const imagePath = computed(() => {
-    return colorMode.preference === "dark" ? darkImage : lightImage;
-});
+    return colorMode.preference === 'dark' ? darkImage : lightImage
+})
 
 const imagePathPalavras = computed(() => {
-    return colorMode.preference === "dark"
+    return colorMode.preference === 'dark'
         ? darkImagePalavras
         : lightImagePalavras;
-});
+})
 </script>
 
 <style scoped>

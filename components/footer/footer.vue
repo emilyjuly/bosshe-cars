@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col mt-24">
-        <div class="flex justify-between dark:bg-light_black w-full px-24 py-16">
+        <div class="flex justify-between regular-bg w-full px-24 py-16">
             <div>
                 <template v-if="colorMode.preference === 'light'">
                     <a href="#inicio">
@@ -23,9 +23,9 @@
                         </svg>
                     </a>
                 </template>
-                <p class="dark:text-medium_gray text-light_black font-light">Confiança, qualidade e inovação</p>
+                <p class="text-color-gray font-light">Confiança, qualidade e inovação</p>
             </div>
-            <div class="flex flex-col dark:text-medium_gray text-light_black font-light">
+            <div class="flex flex-col text-color-gray font-light">
                 <p class="mb-4">Redes Sociais</p>
                 <p class="mb-2">
                     <Icon name="mdi:instagram" />
@@ -40,7 +40,7 @@
                     Facebook
                 </p>
             </div>
-            <div class="flex flex-col dark:text-medium_gray text-light_black font-light">
+            <div class="flex flex-col text-color-gray font-light">
                 <p class="mb-4">Ajuda</p>
                 <p class="mb-2">
                     <Icon name="mdi:whatsapp" />
@@ -50,12 +50,12 @@
         </div>
         <div class="h-0.5 dark:bg-transparent_gray bg-light_black mx-24"></div> <!-- Divider adicionado aqui -->
         <div>
-            <p class="font-light dark:text-medium_gray text-light_black text-xs py-4 px-24">©2024 All rights reserved</p>
+            <p class="font-light text-color-gray text-xs py-4 px-24">©2024 All rights reserved</p>
         </div>
     </div>
 </template>
 
 
 <script setup>
-const colorMode = useColorMode();
+const colorMode = useColorMode()
 </script>

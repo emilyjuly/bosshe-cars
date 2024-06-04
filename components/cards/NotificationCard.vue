@@ -15,11 +15,11 @@
     </transition>
 </template>
 
-<script setup lang="ts">
+<script setup lang='ts'>
 defineProps<{
-    message: string;
-    type: string;
-}>();
+    message: string
+    type: string
+}>()
 </script>
 
 <style scoped>

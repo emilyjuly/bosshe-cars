@@ -22,6 +22,9 @@ import QuemSomosSection from "~/components/sections/QuemSomosSection.vue";
 import CatalogoSection from "~/components/sections/CatalogoSection.vue";
 import FaleConoscoSection from "~/components/sections/FaleConoscoSection.vue";
 
-
+onMounted(async () => {
+    const colorMode = useColorMode();
+    await colorMode.preference;
+})
 </script>
 

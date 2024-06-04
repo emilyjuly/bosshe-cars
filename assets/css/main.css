@@ -29,8 +29,69 @@
     @apply bg-light_gray dark:bg-light_gray;
 }
 
+/*Classes padrões*/
+.flex-col-center {
+    @apply flex flex-col items-center justify-center;
+}
+
+.between-center {
+    @apply flex items-center justify-between;
+}
+
+.regular-padding {
+    @apply p-5;
+}
+
+.error-text {
+    @apply text-sm text-red-600 dark:text-red-300;
+}
+
+.regular-text {
+    @apply font-medium text-lg tracking-wide;
+}
+
+.regular-title {
+    @apply font-black tracking-wide text-4xl;
+}
+
+.regular-subtitle {
+    @apply font-bold text-lg;
+}
+
+.text-color {
+    @apply text-light_black dark:text-white;
+}
+
+.white-text {
+    @apply text-white dark:text-white;
+}
+
+.regular-bg-gray {
+    @apply bg-gray dark:bg-transparent_gray;
+}
+
+.text-color-gray {
+    @apply text-gray dark:text-medium_gray;
+}
+
+.regular-transition {
+    @apply transition duration-300;
+}
+
+.regular-grid {
+    @apply grid grid-cols-3 gap-x-48 gap-y-10;
+}
+
+.regular-bg {
+    @apply bg-white dark:bg-light_black;
+}
+
 .regular-container {
     @apply h-auto w-full flex flex-col items-center;
+}
+
+.regular-container-no-center {
+    @apply flex flex-col h-auto w-full;
 }
 
 .subtitle {

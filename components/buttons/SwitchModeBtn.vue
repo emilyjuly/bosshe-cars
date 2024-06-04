@@ -16,9 +16,9 @@
 </template>
 
 <script setup>
-const colorMode = useColorMode();
+const colorMode = useColorMode()
 
 const toggleTheme = () => {
-    colorMode.preference = colorMode.preference === "dark" ? "light" : "dark";
-};
+    colorMode.preference = colorMode.preference === 'dark' ? 'light' : 'dark'
+}
 </script>

@@ -1,7 +1,7 @@
 <template>
     <div class="regular-container">
         <p class="subtitle mt-24">Preencha seus dados, e entraremos em contato</p>
-        <div class="flex w-1/2 gap-y-12 flex-col label mt-16">
+        <div class="flex flex-col w-1/2 gap-y-12 label mt-16">
             <div class="flex flex-col gap-2">
                 <label for="fullname">* NOME COMPLETO</label>
                 <InputText
@@ -12,7 +12,7 @@
                     @focusout="check('fullname')"
                 />
                 <p
-                    class="text-sm text-red-600 dark:text-red-300"
+                    class="error-text"
                     v-show="formData.fullname.error !== ''"
                 > {{ formData.fullname.error }} </p>
             </div>
@@ -29,7 +29,7 @@
                     @focusout="check('phone')"
                 />
                 <p
-                    class="text-sm text-red-600 dark:text-red-300"
+                    class="error-text"
                     v-show="formData.phone.error !== ''"
                 > {{ formData.phone.error }} </p>
             </div>
@@ -62,7 +62,7 @@
                         @focusout="check('cpf')"
                     />
                     <p
-                        class="text-sm text-red-600 dark:text-red-300"
+                        class="error-text"
                         v-show="formData.cpf.error !== ''"
                     > {{ formData.cpf.error }} </p>
                 </div>
@@ -116,16 +116,16 @@
                 </template>
             </button>
         </div>
-        <NotificationCard :message="notificationMessage" :type="notificationType" v-show="showNotification"/>
+        <NotificationCard :message="notificationMessage" :type="notificationType" v-if="showNotification"/>
     </div>
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue';
-import type {FormData} from '~/types/types';
-import NotificationCard from "~/components/cards/NotificationCard.vue";
+import {ref} from 'vue'
+import type {FormData} from '~/types/types'
+import NotificationCard from '~/components/cards/NotificationCard.vue'
 
-const errorMessage: string = 'Esse campo é obrigatório';
+const errorMessage: string = 'Esse campo é obrigatório'
 
 const showNotification = ref<boolean>(false)
 const notificationType = ref<string>('')
@@ -141,7 +141,7 @@ const formDataDefault: FormData = {
     cnh: {value: false, error: ''},
 }
 
-const formData = ref<FormData>({...formDataDefault});
+const formData = ref<FormData>({...formDataDefault})
 
 const check = (prop: keyof FormData) => {
     const field = formData.value[prop]
@@ -159,7 +159,7 @@ const validateForm = async () => {
 
     simular
         ? isValid = check('fullname') && check('phone') && check('cpf')
-        : isValid = check('fullname') && check('phone');
+        : isValid = check('fullname') && check('phone')
 
 
     if (!isValid) {
@@ -182,7 +182,7 @@ const validateForm = async () => {
                 }),
             });
 
-            const result = await response.json();
+            const result = await response.json()
             if (result.error) {
                 showNotificationMessage('Ocorreu um erro ao enviar o formulário, tente novamente.', 'error')
                 formData.value = { ...formDataDefault }

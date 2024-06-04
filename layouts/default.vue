@@ -1,6 +1,6 @@
 <template>
-  <div class="fixed top-0 w-screen z-50 flex items-center justify-between p-5">
-    <div class="flex justify-between">
+  <div class="fixed top-0 w-screen z-50 between-center regular-padding">
+    <div class="between-center">
       <template v-if="colorMode.preference === 'light'">
         <a href="#inicio">
           <svg class="bg-white" width="87" height="32" viewBox="0 0 87 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -23,7 +23,7 @@
       </template>
     </div>
 
-    <div class="flex items-center font-medium text-lg gap-x-16 pr-5 tracking-wide text-transparent_gray">
+    <div class="between-center regular-text gap-x-16 pr-5 text-transparent_gray">
       <a href="#inicio" :class="{ active: activeSection === 'inicio' }">
         Início</a>
       <a href="#quem-somos" :class="{ active: activeSection === 'quem-somos' }">
@@ -40,51 +40,51 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
-import SwitchModeBtn from "~/components/buttons/SwitchModeBtn.vue";
+import { onMounted } from 'vue'
+import SwitchModeBtn from '~/components/buttons/SwitchModeBtn.vue'
 
-const colorMode = useColorMode();
-const activeSection = ref("inicio");
+const colorMode = useColorMode()
+const activeSection = ref('inicio')
 
-const sections = ["inicio", "quem-somos", "catalogo", "fale-conosco"];
+const sections = ['inicio', 'quem-somos', 'catalogo', 'fale-conosco']
 
 const smoothScroll = () => {
-  const links = document.querySelectorAll('a[href^="#"]');
+  const links = document.querySelectorAll('a[href^="#"]')
   links.forEach((link) => {
-    link.addEventListener("click", function (e) {
-      e.preventDefault();
+    link.addEventListener('click', function (e) {
+      e.preventDefault()
 
-      const targetId = this.getAttribute("href").substring(1);
-      const targetElement = document.getElementById(targetId);
+      const targetId = this.getAttribute('href').substring(1)
+      const targetElement = document.getElementById(targetId)
 
       window.scrollTo({
         top: targetElement.offsetTop,
-        behavior: "smooth",
-      });
-    });
-  });
-};
+        behavior: 'smooth',
+      })
+    })
+  })
+}
 
 const handleScroll = () => {
-  let currentSection = "";
+  let currentSection = ''
   sections.forEach((section) => {
-    const sectionElement = document.getElementById(section);
+    const sectionElement = document.getElementById(section)
     if (sectionElement && window.scrollY >= sectionElement.offsetTop - 10) {
-      currentSection = section;
+      currentSection = section
     }
-  });
-  activeSection.value = currentSection;
-};
+  })
+  activeSection.value = currentSection
+}
 
 onMounted(() => {
-  smoothScroll();
-  window.addEventListener("scroll", handleScroll);
-  handleScroll();
-});
+  smoothScroll()
+  window.addEventListener('scroll', handleScroll)
+  handleScroll()
+})
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
-});
+      window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <style scoped>
