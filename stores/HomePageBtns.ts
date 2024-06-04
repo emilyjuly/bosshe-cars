@@ -5,7 +5,7 @@ export const useHomePageBtnsStore = defineStore('homePageBtns', {
         btnClicked: null as string | null,
     }),
     actions: {
-        handleClick(btn: string): void{
+        handleClick(btn: string):void {
             this.btnClicked === btn ? this.btnClicked = null : this.btnClicked = btn;
         }
     }

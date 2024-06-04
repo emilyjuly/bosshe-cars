@@ -93,6 +93,14 @@
 
             <p>* Indica que o campo é obrigatório.</p>
 
+            <a
+                v-if="storeShop.shopCart.length > 0"
+                class="dark:text-white"
+            >
+                <Icon name="heroicons:information-circle-solid" />
+                Você se interessou por um total de {{ storeShop.shopCart.length }} items. Para ver, abra seu carrinho!
+            </a>
+
             <button
                 class="tracking-wider send-btn mt-1 px-5 py-2 w-56 self-end"
                 @click="validateForm"
@@ -116,21 +124,19 @@
                 </template>
             </button>
         </div>
-        <NotificationCard :message="notificationMessage" :type="notificationType" v-if="showNotification"/>
     </div>
 </template>
 
 <script setup lang="ts">
 import {ref} from 'vue'
 import type {FormData} from '~/types/types'
-import NotificationCard from '~/components/cards/NotificationCard.vue'
+import { useNotificationStore } from '~/stores/Notification'
+import { useShopCartStore } from '~/stores/ShopCart'
 
 const errorMessage: string = 'Esse campo é obrigatório'
-
-const showNotification = ref<boolean>(false)
-const notificationType = ref<string>('')
-const notificationMessage = ref<string>('')
 const loading = ref<boolean>(false)
+const storeNotification = useNotificationStore()
+const storeShop = useShopCartStore()
 
 const formDataDefault: FormData = {
     fullname: {value: '', error: ''},
@@ -163,7 +169,7 @@ const validateForm = async () => {
 
 
     if (!isValid) {
-        showNotificationMessage('Por favor preencha todos os campos obrigatórios.', 'error')
+        storeNotification.showNotification('Por favor preencha todos os campos obrigatórios.', 'error')
     } else {
         try {
             loading.value = true
@@ -184,30 +190,22 @@ const validateForm = async () => {
 
             const result = await response.json()
             if (result.error) {
-                showNotificationMessage('Ocorreu um erro ao enviar o formulário, tente novamente.', 'error')
+                storeNotification.showNotification('Ocorreu um erro ao enviar o formulário, tente novamente.', 'error')
                 formData.value = { ...formDataDefault }
                 loading.value = false
             } else {
-                showNotificationMessage('Formulário enviado com sucesso!', 'success')
+                storeNotification.showNotification('Formulário enviado com sucesso!', 'success')
                 formData.value = { ...formDataDefault }
+                storeShop.shopCart = []
                 loading.value = false
             }
         } catch (error) {
-            showNotificationMessage('Ocorreu um erro ao enviar o formulário, tente novamente.', 'error')
+            storeNotification.showNotification('Ocorreu um erro ao enviar o formulário, tente novamente.', 'error')
             formData.value = { ...formDataDefault }
             loading.value = false
         }
     }
 };
-
-const showNotificationMessage = (msg: string, type: string) => {
-    notificationMessage.value = msg
-    notificationType.value = type
-    showNotification.value = true
-    setTimeout(() => {
-        showNotification.value = false
-    }, 3000)
-}
 
 </script>
 

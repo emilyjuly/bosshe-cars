@@ -1,15 +1,19 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia'
+import type {CarInfo} from '~/types/types'
 
 export const useShopCartStore = defineStore('shopCart', {
     state: () => ({
-        shopCart: []
+        shopCart: [] as CarInfo[]
     }),
     actions: {
-        addToCart(carInfo): void {
+        addToCart(carInfo: CarInfo): void {
             this.shopCart.push(carInfo)
         },
-        deleteToCart(carInfo): void {
-            this.shopCart = this.shopCart.filter((car) => car.carName !== carInfo.carName)
+        checkExistsCar(carInfo: CarInfo): boolean {
+            return this.shopCart.filter((car: CarInfo) => car.name === carInfo.name).length > 0
+        },
+        deleteToCart(carInfo: CarInfo): void {
+            this.shopCart = this.shopCart.filter((car: CarInfo) => car.name !== carInfo.name)
         }
     }
 })

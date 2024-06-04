@@ -20,3 +20,9 @@ export type FormData = {
     valorEntrada: FormDataProp<number | string>;
     cnh: FormDataProp<boolean>;
 }
+
+export type CarInfo = {
+    image: string,
+    price: string,
+    name: string,
+}

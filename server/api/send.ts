@@ -1,11 +1,11 @@
-import {Resend} from 'resend';
+import {Resend} from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 export default defineEventHandler(async (event) => {
     try {
-        const body = await readBody(event);
-        const {fullname, phone, simular, cpf, valorEntrada, cnh} = body;
+        const body = await readBody(event)
+        const {fullname, phone, simular, cpf, valorEntrada, cnh} = body
 
         const emailContent = `
             <strong>Nome Completo:</strong> ${fullname} <br>
@@ -23,8 +23,8 @@ export default defineEventHandler(async (event) => {
             html: emailContent,
         });
 
-        return {data};
+        return {data}
     } catch (error) {
-        return {error: error.message};
+        return {error: error.message}
     }
 });

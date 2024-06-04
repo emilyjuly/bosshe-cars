@@ -1,11 +1,11 @@
 <template>
     <div class="product-card">
-        <img :src="imageSrc" :alt="carName" class="product-image mb-1"/>
+        <img :src="image" :alt="name" class="product-image mb-1"/>
         <p class="product-price">
             <span class="price-currency mr-1">R$</span>
             <span class="price-amount">{{ price }}</span>
         </p>
-        <p class="product-name">{{ carName }}</p>
+        <p class="product-name">{{ name }}</p>
         <button class="buy-button" @click="addToCart">
             COMPRAR
         </button>
@@ -14,17 +14,26 @@
 
 <script setup lang='ts'>
 import { useShopCartStore } from '~/stores/ShopCart'
+import { useNotificationStore } from '~/stores/Notification'
+import type { CarInfo } from '~/types/types'
 
-const store = useShopCartStore()
+const storeShop = useShopCartStore()
+const storeNotification = useNotificationStore()
+
 const addToCart = () => {
-    const carInfo = { image: props.imageSrc, price: props.price, carName: props.carName }
-    store.addToCart(carInfo)
+    const carInfo: CarInfo = { image: props.image, price: props.price, name: props.name }
+    if (!storeShop.checkExistsCar(carInfo)) {
+        storeShop.addToCart(carInfo)
+    } else {
+        storeNotification.showNotification('Esse produto já existe no seu carrinho.', 'info')
+    }
 }
 
+
 const props = defineProps<{
-    imageSrc: any
+    image: any
     price: string
-    carName: string
+    name: string
 }>()
 </script>
 

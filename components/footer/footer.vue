@@ -27,28 +27,22 @@
             </div>
             <div class="flex flex-col text-color-gray font-light">
                 <p class="mb-4">Redes Sociais</p>
-                <p class="mb-2">
-                    <Icon name="mdi:instagram" />
-                    Instagram
-                </p>
-                <p class="mb-2">
-                    <Icon name="mdi:whatsapp" />
-                    WhatsApp
-                </p>
-                <p class="mb-2">
-                    <Icon name="mdi:facebook" />
-                    Facebook
-                </p>
+                <template v-for="(item, index) in mediaItems" :key="index">
+                    <p class="mb-2">
+                        <Icon :name="item.icon" />
+                        <a href="#" class="ml-1 hover:text-medium_gray dark:hover:text-white regular-transition">{{ item.name }}</a>
+                    </p>
+                </template>
             </div>
             <div class="flex flex-col text-color-gray font-light">
                 <p class="mb-4">Ajuda</p>
                 <p class="mb-2">
                     <Icon name="mdi:whatsapp" />
-                    Fale Conosco
+                    <a href="#" class="ml-1 hover:text-medium_gray dark:hover:text-white regular-transition"> Fale Conosco </a>
                 </p>
             </div>
         </div>
-        <div class="h-0.5 dark:bg-transparent_gray bg-light_black mx-24"></div> <!-- Divider adicionado aqui -->
+        <div class="h-0.5 dark:bg-transparent_gray bg-light_black mx-24"></div>
         <div>
             <p class="font-light text-color-gray text-xs py-4 px-24">©2024 All rights reserved</p>
         </div>
@@ -58,4 +52,10 @@
 
 <script setup>
 const colorMode = useColorMode()
+
+const mediaItems= [
+    { name: 'Instagram', icon: 'mdi:instagram' },
+    { name: 'WhatsApp', icon: 'mdi:whatsapp' },
+    { name: 'Facebook', icon: 'mdi:facebook' }
+]
 </script>

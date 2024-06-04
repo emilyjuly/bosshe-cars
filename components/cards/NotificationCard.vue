@@ -6,7 +6,13 @@
                 <p class="transparent">{{ message }}</p>
             </div>
         </div>
-        <div v-else class="toast success notification">
+        <div v-else-if="type === 'success'" class="toast success notification">
+            <div class="flex items-center transparent">
+                <Icon name="heroicons:bell-alert-16-solid" class="mr-2 transparent" />
+                <p class="transparent">{{ message }}</p>
+            </div>
+        </div>
+        <div v-else class="toast info notification">
             <div class="flex items-center transparent">
                 <Icon name="heroicons:bell-alert-16-solid" class="mr-2 transparent" />
                 <p class="transparent">{{ message }}</p>
@@ -37,7 +43,7 @@ defineProps<{
 }
 
 .notification {
-    @apply tracking-wide font-bold px-6 py-4 fixed z-30 bottom-4 flex flex-col items-center;
+    @apply tracking-wide font-medium px-6 py-4 fixed z-30 bottom-4 flex flex-col items-center;
 }
 
 .transparent {
@@ -50,5 +56,9 @@ defineProps<{
 
 .error {
     @apply bg-red-500 dark:bg-red-500 dark:text-white;
+}
+
+.info {
+    @apply bg-blue-500 dark:bg-blue-500 dark:text-white;
 }
 </style>

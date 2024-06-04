@@ -17,7 +17,7 @@
                     </template>
                     <div class="regular-grid">
                         <template v-for="car in filteredCars" :key="car.name">
-                            <CarCard :image-src="car.image" :price="car.price" :carName="car.name" />
+                            <CarCard :image="car.image" :price="car.price" :name="car.name" />
                         </template>
                     </div>
                 </TabPanel>
