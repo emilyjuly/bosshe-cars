@@ -1,18 +1,6 @@
 <template>
     <transition name="toast">
-        <div v-if="type === 'error'" class="toast error notification">
-            <div class="flex items-center transparent">
-                <Icon name="heroicons:bell-alert-16-solid" class="mr-2 transparent" />
-                <p class="transparent">{{ message }}</p>
-            </div>
-        </div>
-        <div v-else-if="type === 'success'" class="toast success notification">
-            <div class="flex items-center transparent">
-                <Icon name="heroicons:bell-alert-16-solid" class="mr-2 transparent" />
-                <p class="transparent">{{ message }}</p>
-            </div>
-        </div>
-        <div v-else class="toast info notification">
+        <div v-if="message" :class="['toast', typeClass, 'notification']">
             <div class="flex items-center transparent">
                 <Icon name="heroicons:bell-alert-16-solid" class="mr-2 transparent" />
                 <p class="transparent">{{ message }}</p>
@@ -22,10 +10,22 @@
 </template>
 
 <script setup lang='ts'>
-defineProps<{
+import { computed } from 'vue'
+
+const props = defineProps<{
     message: string
     type: string
 }>()
+const typeClass = computed(() => {
+    switch (props.type) {
+        case 'error':
+            return 'error'
+        case 'success':
+            return 'success'
+        default:
+            return 'info'
+    }
+})
 </script>
 
 <style scoped>
