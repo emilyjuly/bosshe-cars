@@ -1,7 +1,7 @@
 <template>
     <transition name="toast">
         <div v-if="message" :class="['toast', typeClass, 'notification']">
-            <div class="flex items-center transparent">
+            <div class="flex w-auto items-center transparent">
                 <Icon name="heroicons:bell-alert-16-solid" class="mr-2 transparent" />
                 <p class="transparent">{{ message }}</p>
             </div>
@@ -43,11 +43,11 @@ const typeClass = computed(() => {
 }
 
 .notification {
-    @apply tracking-wide font-medium px-6 py-4 fixed z-30 bottom-4 flex flex-col items-center;
+    @apply tracking-wide font-medium px-6 py-4 fixed z-30 bottom-0 px-4 flex flex-col items-center;
 }
 
 .transparent {
-    @apply dark:bg-transparent bg-transparent;
+    @apply dark:bg-transparent bg-transparent text-base;
 }
 
 .success {

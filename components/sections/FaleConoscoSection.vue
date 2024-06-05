@@ -1,7 +1,7 @@
 <template>
     <div class="regular-container">
-        <p class="subtitle mt-24">Preencha seus dados, e entraremos em contato</p>
-        <div class="flex flex-col w-1/2 gap-y-12 label mt-16">
+        <p class="subtitle px-3 text-center mt-20">Preencha seus dados, e entraremos em contato</p>
+        <div class="flex flex-col px-5 gap-y-12 label mt-16">
             <div class="flex flex-col gap-2">
                 <label for="fullname">* NOME COMPLETO</label>
                 <InputText
@@ -102,7 +102,7 @@
             </a>
 
             <button
-                class="tracking-wider send-btn mt-1 px-5 py-2 w-56 self-end"
+                class="tracking-wider send-btn mt-1 px-5 py-2 w-56 self-center"
                 @click="validateForm"
             >
                 <template v-if="loading">

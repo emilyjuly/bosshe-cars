@@ -1,5 +1,33 @@
 <template>
-    <div class="flex h-screen w-full regular-bg">
+    <div class="flex-col h-screen w-full regular-bg">
+        <img class="h-1/2 object-cover" :src="imagePath" alt="Imagem de um carro" />
+        <img :src="imagePathPalavras" alt="Palavras sobre a imagem do carro" class="w-auto dark:bg-transparent bg-transparent" />
+        <p class="regular-text text-color-gray text-center">
+            Trabalhamos com as melhores marcas do mercado automotivo para oferecer
+            uma excelente experiência a todos os nossos clientes
+        </p>
+<!--        <template v-for="btn in btns" :key="btn.value">
+            <Button :class="[
+                'pulse-animation p-4 absolute z-30',
+                btn.btnPosition,
+                store.btnClicked === btn.value ? 'white-text regular-bg-gray' : 'bg-light_black text-white dark:bg-white dark:text-light_black'
+            ]" rounded aria-label="tooltip" @click="store.handleClick(btn.value)">
+                <Icon class="text-2xl bg-transparent dark:bg-transparent font-medium" name="heroicons:plus-16-solid" />
+            </Button>
+            <div v-if="store.btnClicked === btn.value"
+                 :class="`absolute ${btn.divClass} text-base bg-gray text-white dark:font-medium dark:bg-transparent_gray dark:text-white p-4 rounded-lg shadow-lg`">
+                {{ btn.divPhrase }}
+            </div>
+        </template>-->
+<!--        <div class="flex-col regular-bg">
+            <img :src="imagePathPalavras" alt="Palavras sobre a imagem do carro" />
+            <p class="regular-text text-color-gray ">
+                Trabalhamos com as melhores marcas do mercado automotivo para oferecer
+                uma excelente experiência a todos os nossos clientes
+            </p>
+        </div>-->
+    </div>
+<!--    <div class="flex h-screen w-full regular-bg">
         <div class="flex-col-center w-2/5 relative regular-bg">
             <img :src="imagePathPalavras" alt="Palavras sobre a imagem do carro" />
             <p class="regular-text text-color-gray absolute bottom-4 p-4">
@@ -21,7 +49,7 @@
                 {{ btn.divPhrase }}
             </div>
         </template>
-    </div>
+    </div>-->
 </template>
 
 <script setup lang='ts'>

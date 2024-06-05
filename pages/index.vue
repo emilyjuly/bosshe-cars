@@ -4,18 +4,18 @@
             <HomeSection />
         </section>
         <section class="flex flex-col" id="quem-somos">
-            <QuemSomosSection />
-        </section>
-          <section class="flex flex-col" id="catalogo">
+             <QuemSomosSection />
+         </section>
+         <section class="flex flex-col" id="catalogo">
              <CatalogoSection />
          </section>
-         <section class="flex flex-col" id="fale-conosco">
-             <FaleConoscoSection />
-         </section>
+            <section class="flex flex-col" id="fale-conosco">
+              <FaleConoscoSection />
+          </section>
         <Footer />
-        <div class="flex items-center justify-center">
-            <NotificationCard :message="store.msg" :type="store.type" v-if="store.show" />
-        </div>
+         <div class="flex items-center justify-center">
+             <NotificationCard :message="store.msg" :type="store.type" v-if="store.show" />
+         </div>
     </div>
 </template>
 

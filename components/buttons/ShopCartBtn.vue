@@ -66,7 +66,7 @@ const handleContact = () => {
 
 <style scoped>
 .hover-card {
-    @apply fixed z-30 px-3 py-2 rounded-full bg-beige text-white text-2xl dark:bg-beige dark:text-light_black cursor-pointer bottom-10 right-10 transition duration-200;
+    @apply fixed z-30 px-3 py-2 rounded-full bg-beige text-white text-2xl dark:bg-beige dark:text-light_black cursor-pointer transition duration-200;
 }
 .hover-card:hover {
     @apply dark:hover:bg-transparent_gray dark:hover:text-light_black hover:bg-transparent_gray hover:text-white;
@@ -81,7 +81,7 @@ const handleContact = () => {
     @apply bg-red-500 dark:bg-red-500 dark:text-black absolute -top-1 -right-1 rounded-full w-5 h-5 flex items-center justify-center text-sm font-medium text-white;
 }
 .cart-container {
-    @apply flex flex-col justify-center fixed z-30 bottom-10 right-28 p-5 w-auto bg-transparent_beige text-light_black dark:bg-transparent_beige dark:text-light_black rounded;
+    @apply flex flex-col justify-center fixed z-30 bottom-24  p-5 w-auto bg-beige text-light_black dark:bg-beige dark:text-light_black rounded;
 }
 .cart-item {
     @apply flex gap-x-6 mb-3 p-3 rounded bg-white dark:bg-white;
@@ -105,7 +105,7 @@ const handleContact = () => {
     @apply ml-auto cursor-pointer mt-auto text-beige text-xl dark:bg-transparent;
 }
 .contact-btn {
-    @apply tracking-wider transition duration-200 mt-1 hover:bg-beige hover:text-light_black dark:hover:bg-beige dark:hover:text-light_black text-xs font-bold border-2 py-2 border-beige dark:border-beige bg-transparent dark:bg-transparent px-5 w-full text-light_black dark:text-white;
+    @apply tracking-wider transition duration-200 mt-1 hover:bg-beige hover:text-light_black dark:hover:bg-beige dark:hover:text-light_black text-xs font-bold border-2 py-2 border-light_black dark:border-light_black bg-transparent dark:bg-transparent px-5 w-full text-light_black dark:text-light_black;
 }
 .fade-enter-active, .fade-leave-active {
     transition: opacity 0.5s;

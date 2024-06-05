@@ -51,11 +51,11 @@
 }
 
 .regular-title {
-    @apply font-black tracking-wide text-4xl;
+    @apply font-bold tracking-wide text-xl;
 }
 
 .regular-subtitle {
-    @apply font-bold text-lg;
+    @apply font-semibold text-base;
 }
 
 .text-color {
@@ -79,7 +79,7 @@
 }
 
 .regular-grid {
-    @apply grid grid-cols-3 gap-x-48 gap-y-10;
+    @apply grid grid-cols-1 gap-y-10;
 }
 
 .regular-bg {

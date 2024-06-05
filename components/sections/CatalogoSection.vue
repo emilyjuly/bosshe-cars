@@ -3,10 +3,25 @@
         <p class="text-color regular-title mt-20">
             NOSSA COLEÇÃO DE CARROS
         </p>
-        <p class="subtitle text-center mt-2">
+        <p class="text-sm text-color text-center mt-2">
             Explore e Descubra Nossa Exclusiva Coleção de Carros!
         </p>
-        <div>
+        <TabView class="tabview-custom flex-col-center mt-5" v-model:activeIndex="activeTab">
+            <TabPanel v-for="(tab, index) in tabs" :key="index">
+                <template #header>
+                        <span :class="{ active: activeTab === index }"
+                              class="flex regular-transition text-medium_gray dark:text-medium_gray text-lg mx-5 font-bold mb-10">
+                            {{ tab }}
+                        </span>
+                </template>
+                <div class="regular-grid">
+                    <template v-for="car in filteredCars" :key="car.name">
+                        <CarCard :image="car.image" :price="car.price" :name="car.name" />
+                    </template>
+                </div>
+            </TabPanel>
+        </TabView>
+<!--        <div>
             <TabView class="tabview-custom flex-col-center mt-5" v-model:activeIndex="activeTab">
                 <TabPanel v-for="(tab, index) in tabs" :key="index">
                     <template #header>
@@ -22,7 +37,7 @@
                     </div>
                 </TabPanel>
             </TabView>
-        </div>
+        </div>-->
         <ShopCartBtn v-if="store.shopCart.length > 0" />
     </div>
 </template>

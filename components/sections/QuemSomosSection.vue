@@ -1,6 +1,52 @@
 <template>
-    <div class="regular-container-no-center regular-bg">
-        <div class="h-52 p-12 flex justify-between">
+    <div class="flex-col w-full regular-bg">
+        <div class="h-auto p-10 flex flex w-full justify-between">
+            <img
+                class="w-10"
+                v-for="marca in marcas"
+                :src="marca.src"
+                :alt="`Símbolo da ${marca.name}`"
+                :key="marca.name" />
+        </div>
+        <div class="flex justify-between px-4 items-center text-color">
+            <div class="flex-col-center">
+                <p class="regular-title">20+</p>
+                <p class="regular-subtitle">MODELOS</p>
+            </div>
+
+            <div class="w-0.5 h-10 -translate-x-2/4 regular-bg-gray"></div>
+
+            <div class="flex-col-center">
+                <p class="regular-title">10000+</p>
+                <p class="regular-subtitle">CLIENTES</p>
+            </div>
+
+            <div class="w-0.5 h-10 -translate-x-2/4 regular-bg-gray"></div>
+
+            <div class="flex-col-center">
+                <p class="regular-title">10+</p>
+                <p class="regular-subtitle">MARCAS</p>
+            </div>
+        </div>
+        <div class="flex-col-center">
+            <div class="regular-bg">
+                <img
+                    class="dark:bg-transparent bg-transparent"
+                    src="../../assets/images/renault-kwid.svg"
+                    alt="Renault Kwid Elétrico" />
+            </div>
+            <p class="text-color-gray text-center text-xl w-72 leading-10">
+                Há duas décadas, somos referência em Vale Verde.
+                Oferecemos os melhores carros importados e os últimos modelos,
+                incluindo elétricos. Compre veículos novos e semi novos
+                com financiamento facilitado. Descubra a qualidade que você merece.
+            </p>
+            <span class="flex items-center gap-2 text-color text-base font-semibold mt-16">
+                        <Icon name="heroicons:map-pin-16-solid" />
+                        <span>Vila Verde, Avenida das Estrelas, 23.</span>
+                    </span>
+        </div>
+<!--        <div class="h-52 p-12 flex justify-between">
             <img class="w-16" v-for="marca in marcas" :src="marca.src" :alt="`Símbolo da ${marca.name}`"
                 :key="marca.name" />
         </div>
@@ -43,7 +89,7 @@
                 <img class="dark:bg-transparent bg-transparent relative top-20 right-80"
                     src="../../assets/images/renault-kwid.svg" alt="Renault Kwid Elétrico" />
             </div>
-        </div>
+        </div>-->
     </div>
 </template>
 
