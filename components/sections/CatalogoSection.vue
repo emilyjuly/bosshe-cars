@@ -1,6 +1,6 @@
 <template>
     <div class="regular-container">
-        <p class="text-color regular-title mt-20">
+        <p class="text-color regular-title">
             NOSSA COLEÇÃO DE CARROS
         </p>
         <p class="text-sm text-color text-center mt-2">

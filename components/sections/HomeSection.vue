@@ -1,11 +1,13 @@
 <template>
-    <div class="flex-col h-screen w-full regular-bg">
-        <img class="h-1/2 object-cover" :src="imagePath" alt="Imagem de um carro" />
-        <img :src="imagePathPalavras" alt="Palavras sobre a imagem do carro" class="w-auto dark:bg-transparent bg-transparent" />
-        <p class="regular-text text-color-gray text-center">
-            Trabalhamos com as melhores marcas do mercado automotivo para oferecer
-            uma excelente experiência a todos os nossos clientes
-        </p>
+    <div class="flex flex-col lg:flex-row h-screen w-full regular-bg">
+        <img class="h-1/2 object-cover lg:h-full lg:w-3/5" :src="imagePath" alt="Imagem de um carro" />
+        <div class="flex flex-col lg:w-2/5 lg:justify-center lg:items-center">
+            <img class="w-auto dark:bg-transparent bg-transparent lg:w-96" :src="imagePathPalavras" alt="Palavras sobre a imagem do carro" />
+            <p class="regular-text lg:text-xl text-color-gray text-center lg:absolute lg:bottom-10 lg:px-5">
+                Trabalhamos com as melhores marcas do mercado automotivo para oferecer
+                uma excelente experiência a todos os nossos clientes
+            </p>
+        </div>
 <!--        <template v-for="btn in btns" :key="btn.value">
             <Button :class="[
                 'pulse-animation p-4 absolute z-30',

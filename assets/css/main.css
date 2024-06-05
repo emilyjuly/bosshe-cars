@@ -51,11 +51,11 @@
 }
 
 .regular-title {
-    @apply font-bold tracking-wide text-xl;
+    @apply font-bold tracking-wide text-xl lg:text-3xl;
 }
 
 .regular-subtitle {
-    @apply font-semibold text-base;
+    @apply font-semibold text-base lg:text-lg;
 }
 
 .text-color {
