@@ -1,6 +1,7 @@
 <template>
     <div class="flex flex-col mt-24">
-        <div class="flex-col regular-bg w-full px-5 py-10">
+        <div
+            class="flex flex-col xl:flex-row lg:flex-row md:flex-row sm:flex-row xl:justify-between lg:justify-between md:justify-between sm:justify-between regular-bg w-full px-5 py-10">
             <div>
                 <template v-if="colorMode.preference === 'light'">
                     <a href="#inicio">
@@ -30,7 +31,8 @@
                 <template v-for="(item, index) in mediaItems" :key="index">
                     <p class="mb-2">
                         <Icon :name="item.icon" />
-                        <a href="#" class="ml-1 hover:text-medium_gray dark:hover:text-white regular-transition">{{ item.name }}</a>
+                        <a href="#" class="ml-1 hover:text-medium_gray dark:hover:text-white regular-transition">{{
+                            item.name }}</a>
                     </p>
                 </template>
             </div>
@@ -38,7 +40,8 @@
                 <p class="mb-4">Ajuda</p>
                 <p class="mb-2">
                     <Icon name="mdi:whatsapp" />
-                    <a href="#" class="ml-1 hover:text-medium_gray dark:hover:text-white regular-transition"> Fale Conosco </a>
+                    <a href="#" class="ml-1 hover:text-medium_gray dark:hover:text-white regular-transition"> Fale Conosco
+                    </a>
                 </p>
             </div>
         </div>
@@ -53,7 +56,7 @@
 <script setup>
 const colorMode = useColorMode()
 
-const mediaItems= [
+const mediaItems = [
     { name: 'Instagram', icon: 'mdi:instagram' },
     { name: 'WhatsApp', icon: 'mdi:whatsapp' },
     { name: 'Facebook', icon: 'mdi:facebook' }

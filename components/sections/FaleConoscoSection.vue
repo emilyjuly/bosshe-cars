@@ -1,50 +1,25 @@
 <template>
     <div class="regular-container">
         <p class="subtitle px-3 text-center mt-20">Preencha seus dados, e entraremos em contato</p>
-        <div class="flex flex-col px-5 gap-y-12 label mt-16">
+        <div class="flex flex-col px-5 gap-y-12 label mt-16 xl:w-1/2 lg:w-1/2">
             <div class="flex flex-col gap-2">
                 <label for="fullname">* NOME COMPLETO</label>
-                <InputText
-                    id="fullname"
-                    v-model="formData.fullname.value"
-                    aria-label="Nome completo"
-                    class="input"
-                    @focusout="check('fullname')"
-                />
-                <p
-                    class="error-text"
-                    v-show="formData.fullname.error !== ''"
-                > {{ formData.fullname.error }} </p>
+                <InputText id="fullname" v-model="formData.fullname.value" aria-label="Nome completo" class="input"
+                    @focusout="check('fullname')" />
+                <p class="error-text" v-show="formData.fullname.error !== ''"> {{ formData.fullname.error }} </p>
             </div>
 
             <div class="flex flex-col gap-2">
                 <label for="phone">* CONTATO</label>
-                <InputMask
-                    id="phone"
-                    v-model="formData.phone.value"
-                    aria-label="Número de contato"
-                    class="input"
-                    mask="(99) 99999-9999"
-                    placeholder="(99) 99999-9999"
-                    @focusout="check('phone')"
-                />
-                <p
-                    class="error-text"
-                    v-show="formData.phone.error !== ''"
-                > {{ formData.phone.error }} </p>
+                <InputMask id="phone" v-model="formData.phone.value" aria-label="Número de contato" class="input"
+                    mask="(99) 99999-9999" placeholder="(99) 99999-9999" @focusout="check('phone')" />
+                <p class="error-text" v-show="formData.phone.error !== ''"> {{ formData.phone.error }} </p>
             </div>
 
             <div class="flex items-center">
-                <input
-                    id="simular"
-                    type="checkbox"
-                    v-model="formData.simular.value"
-                    aria-label="Deseja simular um financiamento?"
-                    class="checkbox-custom"/>
-                <label
-                    for="simular"
-                    class="ml-2 tracking-wider"
-                >
+                <input id="simular" type="checkbox" v-model="formData.simular.value"
+                    aria-label="Deseja simular um financiamento?" class="checkbox-custom" />
+                <label for="simular" class="ml-2 tracking-wider">
                     Deseja realizar uma simulação de financiamento?
                 </label>
             </div>
@@ -52,59 +27,33 @@
             <template v-if="formData.simular.value">
                 <div class="flex flex-col gap-2">
                     <label for="cpf">* CPF</label>
-                    <InputMask
-                        id="cpf"
-                        v-model="formData.cpf.value"
-                        aria-label="CPF"
-                        class="input"
-                        mask="999.999.999-99"
-                        placeholder="999.999.999-99"
-                        @focusout="check('cpf')"
-                    />
-                    <p
-                        class="error-text"
-                        v-show="formData.cpf.error !== ''"
-                    > {{ formData.cpf.error }} </p>
+                    <InputMask id="cpf" v-model="formData.cpf.value" aria-label="CPF" class="input" mask="999.999.999-99"
+                        placeholder="999.999.999-99" @focusout="check('cpf')" />
+                    <p class="error-text" v-show="formData.cpf.error !== ''"> {{ formData.cpf.error }} </p>
                 </div>
 
                 <div class="flex flex-col gap-2">
                     <label for="valorEntrada">VALOR DE ENTRADA</label>
-                    <InputText
-                        id="valor_entrada"
-                        v-model="formData.valorEntrada.value"
-                        aria-label="valorEntrada"
-                        class="input"
-                        placeholder="R$"/>
+                    <InputText id="valor_entrada" v-model="formData.valorEntrada.value" aria-label="valorEntrada"
+                        class="input" placeholder="R$" />
                 </div>
 
                 <div class="flex items-center">
-                    <input
-                        id="cnh"
-                        type="checkbox"
-                        v-model="formData.cnh.value"
-                        class="checkbox-custom"
-                    />
-                    <label
-                        for="cnh"
-                        class="ml-2 tracking-wider"
-                    > Possui CNH? </label>
+                    <input id="cnh" type="checkbox" v-model="formData.cnh.value" class="checkbox-custom" />
+                    <label for="cnh" class="ml-2 tracking-wider"> Possui CNH? </label>
                 </div>
             </template>
 
             <p>* Indica que o campo é obrigatório.</p>
 
-            <a
-                v-if="storeShop.shopCart.length > 0"
-                class="dark:text-white"
-            >
+            <a v-if="storeShop.shopCart.length > 0" class="dark:text-white">
                 <Icon name="heroicons:information-circle-solid" />
                 Você se interessou por um total de {{ storeShop.shopCart.length }} items. Para ver, abra seu carrinho!
             </a>
 
             <button
-                class="tracking-wider send-btn mt-1 px-5 py-2 w-56 self-center"
-                @click="validateForm"
-            >
+                class="tracking-wider send-btn mt-1 px-5 py-2 w-56 self-center xl:self-end lg:self-end md:self-end sm:self-end"
+                @click="validateForm">
                 <template v-if="loading">
                     <div class="loaderContainer">
                         <div class="particleContainer">
@@ -128,8 +77,8 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue'
-import type {FormData} from '~/types/types'
+import { ref } from 'vue'
+import type { FormData } from '~/types/types'
 import { useNotificationStore } from '~/stores/Notification'
 import { useShopCartStore } from '~/stores/ShopCart'
 
@@ -139,15 +88,15 @@ const storeNotification = useNotificationStore()
 const storeShop = useShopCartStore()
 
 const formDataDefault: FormData = {
-    fullname: {value: '', error: ''},
-    phone: {value: '', error: ''},
-    simular: {value: false, error: ''},
-    cpf: {value: '', error: ''},
-    valorEntrada: {value: '', error: ''},
-    cnh: {value: false, error: ''},
+    fullname: { value: '', error: '' },
+    phone: { value: '', error: '' },
+    simular: { value: false, error: '' },
+    cpf: { value: '', error: '' },
+    valorEntrada: { value: '', error: '' },
+    cnh: { value: false, error: '' },
 }
 
-const formData = ref<FormData>({...formDataDefault})
+const formData = ref<FormData>({ ...formDataDefault })
 
 const check = (prop: keyof FormData) => {
     const field = formData.value[prop]
@@ -278,12 +227,15 @@ const validateForm = async () => {
     0% {
         transform: scale(1) translateY(0);
     }
+
     50% {
         transform: scale(0.75);
     }
+
     75% {
         transform: scale(1.05);
     }
+
     100% {
         transform: sclae(1);
     }
@@ -293,6 +245,7 @@ const validateForm = async () => {
     from {
         transform: translateX(0%);
     }
+
     to {
         transform: translateX(calc(-50% + 1.25em));
     }

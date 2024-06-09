@@ -1,57 +1,18 @@
 <template>
-    <div class="flex flex-col lg:flex-row h-screen w-full regular-bg">
-        <img class="h-1/2 object-cover lg:h-full lg:w-3/5" :src="imagePath" alt="Imagem de um carro" />
-        <div class="flex flex-col lg:w-2/5 lg:justify-center lg:items-center">
-            <img class="w-auto dark:bg-transparent bg-transparent lg:w-96" :src="imagePathPalavras" alt="Palavras sobre a imagem do carro" />
-            <p class="regular-text lg:text-xl text-color-gray text-center lg:absolute lg:bottom-10 lg:px-5">
+    <div class="flex flex-col xl:flex-row lg:flex-row md:flex-row sm:flex-row h-screen w-full regular-bg">
+        <img class="h-1/2 object-cover xl:h-full lg:h-full md:h-full sm:h-full xl:w-3/5 lg:w-3/5 md:w-3/5 sm:w-3/5"
+            :src="imagePath" alt="Imagem de um carro" />
+        <div
+            class="flex flex-col xl:w-2/5 lg:w-2/5 md:w-2/5 sm:w-2/5 xl:justify-center lg:justify-center md:justify-center sm:justify-center xl:items-center lg:items-center md:items-center sm:items-center">
+            <img class="w-auto dark:bg-transparent bg-transparent xl:w-96 lg:w-96 md:w-80 sm:w-72" :src="imagePathPalavras"
+                alt="Palavras sobre a imagem do carro" />
+            <p
+                class="regular-text xl:text-xl lg:text-xl md:text-sm sm:text-sm text-color-gray text-center xl:absolute lg:absolute md:absolute sm:absolute xl:bottom-10 lg:bottom-10 md:bottom-6 sm:bottom-6 xl:px-5 lg:px-5 md:px-5 sm:px-5">
                 Trabalhamos com as melhores marcas do mercado automotivo para oferecer
                 uma excelente experiência a todos os nossos clientes
             </p>
         </div>
-<!--        <template v-for="btn in btns" :key="btn.value">
-            <Button :class="[
-                'pulse-animation p-4 absolute z-30',
-                btn.btnPosition,
-                store.btnClicked === btn.value ? 'white-text regular-bg-gray' : 'bg-light_black text-white dark:bg-white dark:text-light_black'
-            ]" rounded aria-label="tooltip" @click="store.handleClick(btn.value)">
-                <Icon class="text-2xl bg-transparent dark:bg-transparent font-medium" name="heroicons:plus-16-solid" />
-            </Button>
-            <div v-if="store.btnClicked === btn.value"
-                 :class="`absolute ${btn.divClass} text-base bg-gray text-white dark:font-medium dark:bg-transparent_gray dark:text-white p-4 rounded-lg shadow-lg`">
-                {{ btn.divPhrase }}
-            </div>
-        </template>-->
-<!--        <div class="flex-col regular-bg">
-            <img :src="imagePathPalavras" alt="Palavras sobre a imagem do carro" />
-            <p class="regular-text text-color-gray ">
-                Trabalhamos com as melhores marcas do mercado automotivo para oferecer
-                uma excelente experiência a todos os nossos clientes
-            </p>
-        </div>-->
     </div>
-<!--    <div class="flex h-screen w-full regular-bg">
-        <div class="flex-col-center w-2/5 relative regular-bg">
-            <img :src="imagePathPalavras" alt="Palavras sobre a imagem do carro" />
-            <p class="regular-text text-color-gray absolute bottom-4 p-4">
-                Trabalhamos com as melhores marcas do mercado automotivo para oferecer
-                uma excelente experiência a todos os nossos clientes
-            </p>
-        </div>
-        <img class="h-full w-3/5 object-cover" :src="imagePath" alt="Imagem de um carro" />
-        <template v-for="btn in btns" :key="btn.value">
-            <Button :class="[
-                'pulse-animation p-4 absolute z-30',
-                btn.btnPosition,
-                store.btnClicked === btn.value ? 'white-text regular-bg-gray' : 'bg-light_black text-white dark:bg-white dark:text-light_black'
-            ]" rounded aria-label="tooltip" @click="store.handleClick(btn.value)">
-                <Icon class="text-2xl bg-transparent dark:bg-transparent font-medium" name="heroicons:plus-16-solid" />
-            </Button>
-            <div v-if="store.btnClicked === btn.value"
-                :class="`absolute ${btn.divClass} text-base bg-gray text-white dark:font-medium dark:bg-transparent_gray dark:text-white p-4 rounded-lg shadow-lg`">
-                {{ btn.divPhrase }}
-            </div>
-        </template>
-    </div>-->
 </template>
 
 <script setup lang='ts'>

@@ -1,5 +1,5 @@
 <template>
-    <div class="regular-container">
+    <div class="regular-container xl:mt-20 lg:mt-20 md:mt-20 sm:mt-20">
         <p class="text-color regular-title">
             NOSSA COLEÇÃO DE CARROS
         </p>
@@ -9,10 +9,10 @@
         <TabView class="tabview-custom flex-col-center mt-5" v-model:activeIndex="activeTab">
             <TabPanel v-for="(tab, index) in tabs" :key="index">
                 <template #header>
-                        <span :class="{ active: activeTab === index }"
-                              class="flex regular-transition text-medium_gray dark:text-medium_gray text-lg mx-5 font-bold mb-10">
-                            {{ tab }}
-                        </span>
+                    <span :class="{ active: activeTab === index }"
+                        class="flex regular-transition text-medium_gray dark:text-medium_gray text-lg mx-5 xl:mx-24 lg:mx-24 md:mx-16 sm:mx-10 font-bold mb-10">
+                        {{ tab }}
+                    </span>
                 </template>
                 <div class="regular-grid">
                     <template v-for="car in filteredCars" :key="car.name">
@@ -21,23 +21,6 @@
                 </div>
             </TabPanel>
         </TabView>
-<!--        <div>
-            <TabView class="tabview-custom flex-col-center mt-5" v-model:activeIndex="activeTab">
-                <TabPanel v-for="(tab, index) in tabs" :key="index">
-                    <template #header>
-                        <span :class="{ active: activeTab === index }"
-                            class="flex regular-transition text-medium_gray dark:text-medium_gray text-xl font-bold mx-32 mb-10">
-                            {{ tab }}
-                        </span>
-                    </template>
-                    <div class="regular-grid">
-                        <template v-for="car in filteredCars" :key="car.name">
-                            <CarCard :image="car.image" :price="car.price" :name="car.name" />
-                        </template>
-                    </div>
-                </TabPanel>
-            </TabView>
-        </div>-->
         <ShopCartBtn v-if="store.shopCart.length > 0" />
     </div>
 </template>

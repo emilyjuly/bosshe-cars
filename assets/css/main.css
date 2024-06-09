@@ -51,11 +51,11 @@
 }
 
 .regular-title {
-    @apply font-bold tracking-wide text-xl lg:text-3xl;
+    @apply font-bold tracking-wide text-xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg;
 }
 
 .regular-subtitle {
-    @apply font-semibold text-base lg:text-lg;
+    @apply font-semibold text-base xl:text-lg lg:text-sm md:text-xs sm:text-xs;
 }
 
 .text-color {
@@ -79,7 +79,7 @@
 }
 
 .regular-grid {
-    @apply grid grid-cols-1 gap-y-10;
+    @apply grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 xl:gap-x-24 lg:gap-x-24 md:gap-x-12 sm:gap-x-6 gap-y-10;
 }
 
 .regular-bg {
