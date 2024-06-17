@@ -25,55 +25,60 @@
             </template>
         </div>
 
-        <div class="text-color">
-            <SwitchModeBtn />
-            <Icon name="ic:baseline-menu" class="ml-5 text-2xl cursor-pointer" @click="showMenu = !showMenu" />
-            <transition name="menu-transition">
-                <div v-if="showMenu"
-                    class="flex flex-col p-3 gap-y-4 regular-bg border-2 dark:border-white border-light_black fixed top-20 right-2">
+        <div class="text-color flex">
+            <!--mobile menu button-->
+            <div class="md:hidden lg:hidden">
+                <SwitchModeBtn/>
+                <Icon name="ic:baseline-menu" class="ml-5 text-2xl cursor-pointer" @click="showMenu = !showMenu"/>
+                <transition name="menu-transition">
+                    <div v-if="showMenu"
+                         class="flex flex-col p-3 gap-y-4 regular-bg border-2 dark:border-white border-light_black fixed top-20 right-2">
                     <span class="flex items-center" @click="showMenu = !showMenu">
                         <a href="#inicio" :class="{ active: activeSection === 'inicio' }">
-                            <Icon name="heroicons:home-20-solid" class="mr-2" />
+                            <Icon name="heroicons:home-20-solid" class="mr-2"/>
                             Início
                         </a>
                     </span>
 
-                    <span class="flex items-center" @click="showMenu = !showMenu">
+                        <span class="flex items-center" @click="showMenu = !showMenu">
                         <a href="#quem-somos" :class="{ active: activeSection === 'quem-somos' }">
-                            <Icon name="heroicons:user-group-16-solid" class="mr-2" />
+                            <Icon name="heroicons:user-group-16-solid" class="mr-2"/>
                             Quem Somos
                         </a>
                     </span>
 
-                    <span class="flex items-center" @click="showMenu = !showMenu">
+                        <span class="flex items-center" @click="showMenu = !showMenu">
                         <a href="#catalogo" :class="{ active: activeSection === 'catalogo' }">
-                            <Icon name="heroicons:book-open-solid" class="mr-2" />
+                            <Icon name="heroicons:book-open-solid" class="mr-2"/>
                             Catálogo
                         </a>
                     </span>
 
-                    <span class="flex items-center" @click="showMenu = !showMenu">
+                        <span class="flex items-center" @click="showMenu = !showMenu">
                         <a href="#fale-conosco" :class="{ active: activeSection === 'fale-conosco' }">
-                            <Icon name="heroicons:chat-bubble-left-16-solid" class="mr-2" />
+                            <Icon name="heroicons:chat-bubble-left-16-solid" class="mr-2"/>
                             Fale Conosco
                         </a>
                     </span>
+                    </div>
+                </transition>
+            </div>
+            <!--desktop menu-->
+            <div class="hidden md:flex lg:flex">
+                <div class="between-center regular-text gap-x-16 pr-5 text-transparent_gray">
+                    <a href="#inicio" :class="{ active: activeSection === 'inicio' }">
+                        Início</a>
+                    <a href="#quem-somos" :class="{ active: activeSection === 'quem-somos' }">
+                        Quem Somos</a>
+                    <a href="#catalogo" :class="{ active: activeSection === 'catalogo' }">
+                        Catálogo</a>
+                    <a href="#fale-conosco" :class="{ active: activeSection === 'fale-conosco' }">
+                        Fale Conosco
+                    </a>
+                    <SwitchModeBtn/>
                 </div>
-            </transition>
+            </div>
         </div>
-
-        <!--    <div class="between-center regular-text gap-x-16 pr-5 text-transparent_gray">
-              <a href="#inicio" :class="{ active: activeSection === 'inicio' }">
-                Início</a>
-              <a href="#quem-somos" :class="{ active: activeSection === 'quem-somos' }">
-                Quem Somos</a>
-              <a href="#catalogo" :class="{ active: activeSection === 'catalogo' }">
-                Catálogo</a>
-              <a href="#fale-conosco" :class="{ active: activeSection === 'fale-conosco' }">
-                Fale Conosco
-              </a>
-              <SwitchModeBtn />
-            </div>-->
     </div>
     <slot />
 </template>
@@ -129,7 +134,7 @@ onUnmounted(() => {
 
 <style scoped>
 .active {
-    @apply border-b-2 font-medium;
+    @apply border-b-2 font-medium dark:text-white text-black;
 }
 
 .menu-transition-enter-active,
