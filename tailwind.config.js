@@ -12,22 +12,21 @@ export default {
   theme: {
     extend: {
       colors: {
-        'gray': '#464646',
-        'medium_gray': '#939393',
-        'light_gray': '#C0C0C0',
-        'white': '#ECECEC',
-        'light_black': '#1D1D1D',
-        'transparent_gray': 'rgba(148, 148, 148, 0.76)',
-        'transparent_beige': 'rgba(197, 171, 148, 0.60)',
-        'beige': '#C5AC94',
-        'transparent_black': 'rgba(24, 24, 24, 0.38)',
+        gray: "#464646",
+        medium_gray: "#939393",
+        light_gray: "#C0C0C0",
+        white: "#ECECEC",
+        light_black: "#1D1D1D",
+        transparent_gray: "rgba(148, 148, 148, 0.76)",
+        transparent_beige: "rgba(197, 171, 148, 0.60)",
+        beige: "#C5AC94",
+        transparent_black: "rgba(24, 24, 24, 0.38)",
       },
       fontFamily: {
-        sans: ['Roboto', 'sans-serif'],
-      }
+        sans: ["Roboto", "sans-serif"],
+      },
     },
   },
   plugins: [],
-  darkMode: 'class',
-}
-
+  darkMode: "class",
+};

@@ -1,23 +1,27 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    modules: ["@nuxtjs/tailwindcss", "@nuxtjs/color-mode", "nuxt-icon", "nuxt-primevue", "@pinia/nuxt"],
-    primevue: {
-        usePrimeVue: true
-    },
-    colorMode: {
-        classSuffix: "",
-        preference: "dark",
-        fallback: "",
-    },
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/color-mode",
+    "nuxt-icon",
+    "nuxt-primevue",
+    "@pinia/nuxt",
+  ],
+  primevue: {
+    usePrimeVue: true,
+  },
+  colorMode: {
+    classSuffix: "",
+    preference: "dark",
+    fallback: "",
+  },
 
-    devtools: {enabled: false},
-    css: [
-        "~/assets/css/main.css",
-    ],
-    postcss: {
-        plugins: {
-            tailwindcss: {},
-            autoprefixer: {},
-        },
+  devtools: { enabled: false },
+  css: ["~/assets/css/main.css"],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
     },
+  },
 });
