@@ -1,6 +1,9 @@
 <template>
   <div class="flex-col">
-    <img :src="image" :alt="name" class="mb-1" />
+    <div v-if="loading" class="loading-container">
+      <Skeleton size="15rem"></Skeleton>
+    </div>
+    <img v-show="!loading" :src="image" :alt="name" @load="onLoad" />
     <p class="text-lg font-semibold">
       <span class="mr-1 text-beige dark:text-beige">R$</span>
       <span class="text-light_black dark:text-white">{{ price }}</span>
@@ -39,6 +42,12 @@ const addToCart = () => {
       "info",
     );
   }
+};
+
+const loading = ref(true);
+
+const onLoad = () => {
+  loading.value = false;
 };
 
 const props = defineProps<{

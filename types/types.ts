@@ -26,3 +26,10 @@ export type CarInfo = {
   price: string;
   name: string;
 };
+
+export type CarCategories = {
+  suv: CarInfo[];
+  sedan: CarInfo[];
+  hatch: CarInfo[];
+  "4x4": CarInfo[];
+};
