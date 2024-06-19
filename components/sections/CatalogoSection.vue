@@ -1,23 +1,31 @@
 <template>
-  <div class="regular-container xl:mt-20 lg:mt-20 md:mt-20 sm:mt-20">
-    <p class="text-color regular-title">NOSSA COLEÇÃO DE CARROS</p>
-    <p class="text-sm text-color text-center mt-2">
+  <div
+    class="flex h-auto w-full flex-col items-center sm:mt-20 md:mt-20 lg:mt-20 xl:mt-20"
+  >
+    <p
+      class="text-xl font-bold tracking-wide text-light_black dark:text-white sm:text-lg md:text-xl lg:text-2xl xl:text-3xl"
+    >
+      NOSSA COLEÇÃO DE CARROS
+    </p>
+    <p class="mt-2 text-center text-sm text-light_black dark:text-white">
       Explore e Descubra Nossa Exclusiva Coleção de Carros!
     </p>
     <TabView
-      class="tabview-custom flex-col-center mt-5"
+      class="tabview-custom mt-5 flex flex-col items-center justify-center"
       v-model:activeIndex="activeTab"
     >
       <TabPanel v-for="(tab, index) in tabs" :key="index">
         <template #header>
           <span
             :class="{ active: activeTab === index }"
-            class="flex regular-transition text-medium_gray dark:text-medium_gray text-lg mx-5 xl:mx-24 lg:mx-24 md:mx-16 sm:mx-10 font-bold mb-10"
+            class="mx-5 mb-10 flex text-lg font-bold text-medium_gray transition duration-300 dark:text-medium_gray sm:mx-10 md:mx-16 lg:mx-24 xl:mx-24"
           >
             {{ tab }}
           </span>
         </template>
-        <div class="regular-grid">
+        <div
+          class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 sm:gap-x-6 md:grid-cols-3 md:gap-x-12 lg:grid-cols-3 lg:gap-x-24 xl:grid-cols-3 xl:gap-x-24"
+        >
           <template v-for="car in filteredCars" :key="car.name">
             <CarCard :image="car.image" :price="car.price" :name="car.name" />
           </template>
@@ -119,6 +127,12 @@ const filteredCars = computed(() => {
 
 <style scoped>
 .active {
-  @apply text-gray dark:text-white border-b-2 transition duration-300;
+  border-bottom-width: 2px;
+  font-weight: 500;
+  color: black;
+}
+
+.dark .active {
+  color: white;
 }
 </style>

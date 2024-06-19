@@ -1,22 +1,22 @@
 <template>
   <div
-    class="flex flex-col xl:flex-row lg:flex-row md:flex-row sm:flex-row h-screen w-full regular-bg"
+    class="flex h-screen w-full flex-col bg-white dark:bg-light_black sm:flex-row md:flex-row lg:flex-row xl:flex-row"
   >
     <img
-      class="h-1/2 object-cover xl:h-full lg:h-full md:h-full sm:h-full xl:w-3/5 lg:w-3/5 md:w-3/5 sm:w-3/5"
+      class="h-1/2 object-cover sm:h-full sm:w-3/5 md:h-full md:w-3/5 lg:h-full lg:w-3/5 xl:h-full xl:w-3/5"
       :src="imagePath"
       alt="Imagem de um carro"
     />
     <div
-      class="flex flex-col xl:w-2/5 lg:w-2/5 md:w-2/5 sm:w-2/5 xl:justify-center lg:justify-center md:justify-center sm:justify-center xl:items-center lg:items-center md:items-center sm:items-center"
+      class="flex flex-col sm:w-2/5 sm:items-center sm:justify-center md:w-2/5 md:items-center md:justify-center lg:w-2/5 lg:items-center lg:justify-center xl:w-2/5 xl:items-center xl:justify-center"
     >
       <img
-        class="w-auto dark:bg-transparent bg-transparent xl:w-96 lg:w-96 md:w-80 sm:w-72"
+        class="w-auto bg-transparent dark:bg-transparent sm:w-72 md:w-80 lg:w-96 xl:w-96"
         :src="imagePathPalavras"
         alt="Palavras sobre a imagem do carro"
       />
       <p
-        class="regular-text xl:text-xl lg:text-xl md:text-sm sm:text-sm text-color-gray text-center xl:absolute lg:absolute md:absolute sm:absolute xl:bottom-10 lg:bottom-10 md:bottom-6 sm:bottom-6 xl:px-5 lg:px-5 md:px-5 sm:px-5"
+        class="dark:text-white-gray text-center text-lg font-medium tracking-wide text-light_black sm:absolute sm:bottom-6 sm:px-5 sm:text-sm md:absolute md:bottom-6 md:px-5 md:text-sm lg:absolute lg:bottom-10 lg:px-5 lg:text-xl xl:absolute xl:bottom-10 xl:px-5 xl:text-xl"
       >
         Trabalhamos com as melhores marcas do mercado automotivo para oferecer
         uma excelente experiência a todos os nossos clientes

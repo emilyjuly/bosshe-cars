@@ -1,11 +1,11 @@
 <template>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <div class="fixed top-0 w-screen z-50 between-center regular-padding">
-    <div class="between-center">
+  <div class="fixed top-0 z-50 flex w-screen items-center justify-between p-5">
+    <div class="flex items-center justify-between">
       <template v-if="colorMode.preference === 'light'">
         <a href="#inicio">
           <svg
-            class="bg-white w-20 xl:w-24"
+            class="w-20 bg-white xl:w-24"
             width="87"
             height="32"
             viewBox="0 0 87 32"
@@ -23,7 +23,7 @@
       <template v-else>
         <a href="#inicio">
           <svg
-            class="bg-light_black w-20 xl:w-24"
+            class="w-20 bg-light_black xl:w-24"
             width="87"
             height="32"
             viewBox="0 0 87 32"
@@ -39,54 +39,33 @@
       </template>
     </div>
 
-    <div class="text-color flex">
+    <div class="text-light_black dark:text-white">
       <!--mobile menu button-->
       <div class="md:hidden lg:hidden">
         <SwitchModeBtn />
         <Icon
           name="ic:baseline-menu"
-          class="ml-5 text-2xl cursor-pointer"
+          class="ml-5 cursor-pointer text-2xl"
           @click="showMenu = !showMenu"
         />
         <transition name="menu-transition">
           <div
             v-if="showMenu"
-            class="flex flex-col p-3 gap-y-4 regular-bg border-2 dark:border-white border-light_black fixed top-20 right-2"
+            class="fixed right-2 top-20 flex flex-col gap-y-4 bg-white p-5 dark:bg-light_black"
           >
-            <span class="flex items-center" @click="showMenu = !showMenu">
-              <a href="#inicio" :class="{ active: activeSection === 'inicio' }">
-                <Icon name="heroicons:home-20-solid" class="mr-2" />
-                Início
-              </a>
-            </span>
-
-            <span class="flex items-center" @click="showMenu = !showMenu">
+            <span
+              v-for="item in menuItems"
+              :key="item.href"
+              class="flex items-center"
+              @click="showMenu = !showMenu"
+            >
               <a
-                href="#quem-somos"
-                :class="{ active: activeSection === 'quem-somos' }"
+                :href="item.href"
+                :class="{ active: activeSection === item.section }"
+                @click.prevent="scrollToSection(item.href)"
               >
-                <Icon name="heroicons:user-group-16-solid" class="mr-2" />
-                Quem Somos
-              </a>
-            </span>
-
-            <span class="flex items-center" @click="showMenu = !showMenu">
-              <a
-                href="#catalogo"
-                :class="{ active: activeSection === 'catalogo' }"
-              >
-                <Icon name="heroicons:book-open-solid" class="mr-2" />
-                Catálogo
-              </a>
-            </span>
-
-            <span class="flex items-center" @click="showMenu = !showMenu">
-              <a
-                href="#fale-conosco"
-                :class="{ active: activeSection === 'fale-conosco' }"
-              >
-                <Icon name="heroicons:chat-bubble-left-16-solid" class="mr-2" />
-                Fale Conosco
+                <Icon :name="item.iconName" class="mr-2" />
+                {{ item.name }}
               </a>
             </span>
           </div>
@@ -95,25 +74,16 @@
       <!--desktop menu-->
       <div class="hidden md:flex lg:flex">
         <div
-          class="between-center regular-text gap-x-16 pr-5 text-transparent_gray"
+          class="flex items-center justify-between gap-x-16 pr-5 text-lg font-medium tracking-wide text-transparent_gray"
         >
-          <a href="#inicio" :class="{ active: activeSection === 'inicio' }">
-            Início</a
-          >
           <a
-            href="#quem-somos"
-            :class="{ active: activeSection === 'quem-somos' }"
+            v-for="item in menuItems"
+            :key="item.href"
+            :href="item.href"
+            :class="{ active: activeSection === item.section }"
+            @click.prevent="scrollToSection(item.href)"
           >
-            Quem Somos</a
-          >
-          <a href="#catalogo" :class="{ active: activeSection === 'catalogo' }">
-            Catálogo</a
-          >
-          <a
-            href="#fale-conosco"
-            :class="{ active: activeSection === 'fale-conosco' }"
-          >
-            Fale Conosco
+            {{ item.name }}
           </a>
           <SwitchModeBtn />
         </div>
@@ -123,77 +93,105 @@
   <slot />
 </template>
 
-<script setup>
-import { onMounted } from "vue";
+<script lang="ts" setup>
 import SwitchModeBtn from "~/components/buttons/SwitchModeBtn.vue";
+
+interface MenuItem {
+  href: string;
+  section: string;
+  name: string;
+  iconName: string;
+}
 
 const colorMode = useColorMode();
 const showMenu = ref(false);
 const activeSection = ref("inicio");
 
-const sections = ["inicio", "quem-somos", "catalogo", "fale-conosco"];
+const menuItems: MenuItem[] = [
+  {
+    href: "#inicio",
+    section: "inicio",
+    name: "Início",
+    iconName: "heroicons:home-20-solid",
+  },
+  {
+    href: "#quem-somos",
+    section: "quem-somos",
+    name: "Quem Somos",
+    iconName: "heroicons:user-group-16-solid",
+  },
+  {
+    href: "#catalogo",
+    section: "catalogo",
+    name: "Catálogo",
+    iconName: "heroicons:book-open-solid",
+  },
+  {
+    href: "#fale-conosco",
+    section: "fale-conosco",
+    name: "Fale Conosco",
+    iconName: "heroicons:chat-bubble-left-16-solid",
+  },
+];
 
-const smoothScroll = () => {
-  const links = document.querySelectorAll('a[href^="#"]');
-  links.forEach((link) => {
-    link.addEventListener("click", function (e) {
-      e.preventDefault();
-
-      const targetId = this.getAttribute("href").substring(1);
-      const targetElement = document.getElementById(targetId);
-
-      window.scrollTo({
-        top: targetElement.offsetTop,
-        behavior: "smooth",
-      });
-    });
-  });
+const scrollToSection = (href: string) => {
+  const section = document.querySelector(href);
+  if (section) {
+    activeSection.value = section.id;
+    section.scrollIntoView({ behavior: "smooth" });
+  }
 };
 
-const handleScroll = () => {
-  let currentSection = "";
-  sections.forEach((section) => {
-    const sectionElement = document.getElementById(section);
-    if (sectionElement && window.scrollY >= sectionElement.offsetTop - 10) {
-      currentSection = section;
+const updateActiveSection = () => {
+  let currentSection = "inicio";
+  menuItems.forEach((item) => {
+    const section = document.querySelector(item.href);
+    if (
+      section &&
+      section.getBoundingClientRect().top <= window.innerHeight / 2
+    ) {
+      currentSection = item.section;
     }
   });
   activeSection.value = currentSection;
 };
 
 onMounted(() => {
-  smoothScroll();
-  window.addEventListener("scroll", handleScroll);
-  handleScroll();
+  window.addEventListener("scroll", updateActiveSection);
 });
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
+  window.removeEventListener("scroll", updateActiveSection);
 });
 </script>
 
 <style scoped>
 .active {
-  @apply border-b-2 font-medium dark:text-white text-black;
+  border-bottom-width: 2px;
+  font-weight: 500;
+  color: black;
 }
 
+.dark .active {
+  color: white;
+}
+
+/* Estilos de transição */
 .menu-transition-enter-active,
 .menu-transition-leave-active {
   transition:
-    opacity 0.5s ease,
-    transform 0.5s ease;
+    opacity 0.3s,
+    transform 0.3s;
 }
 
-.menu-transition-enter,
-.menu-transition-leave-to
-
-/* .menu-transition-leave-active in <2.1.8 */ {
+.menu-transition-enter-from,
+.menu-transition-leave-to {
   opacity: 0;
   transform: translateY(-10px);
 }
 
 .menu-transition-enter-to,
-.menu-transition-leave {
+.menu-transition-leave-from {
   opacity: 1;
   transform: translateY(0);
 }

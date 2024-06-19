@@ -6,11 +6,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Estilização padrão da página */
 * {
-  @apply bg-white dark:bg-light_black font-sans;
+  font-family: sans-serif;
+  background-color: #ececec;
   padding: 0;
   margin: 0;
 }
+
+.dark * {
+  background-color: #1d1d1d;
+}
+
+/* Estilização do scrollbar */
 
 ::-webkit-scrollbar {
   width: 12px;
@@ -21,90 +29,9 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-medium_gray dark:bg-medium_gray rounded-lg;
+  @apply rounded-lg bg-medium_gray dark:bg-medium_gray;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-light_gray dark:bg-light_gray;
-}
-
-/*Classes padrões*/
-.flex-col-center {
-  @apply flex flex-col items-center justify-center;
-}
-
-.between-center {
-  @apply flex items-center justify-between;
-}
-
-.regular-padding {
-  @apply p-5;
-}
-
-.error-text {
-  @apply text-sm text-red-600 dark:text-red-300;
-}
-
-.regular-text {
-  @apply font-medium text-lg tracking-wide;
-}
-
-.regular-title {
-  @apply font-bold tracking-wide text-xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg;
-}
-
-.regular-subtitle {
-  @apply font-semibold text-base xl:text-lg lg:text-sm md:text-xs sm:text-xs;
-}
-
-.text-color {
-  @apply text-light_black dark:text-white;
-}
-
-.white-text {
-  @apply text-white dark:text-white;
-}
-
-.regular-bg-gray {
-  @apply bg-gray dark:bg-transparent_gray;
-}
-
-.text-color-gray {
-  @apply text-gray dark:text-medium_gray;
-}
-
-.regular-transition {
-  @apply transition duration-300;
-}
-
-.regular-grid {
-  @apply grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 xl:gap-x-24 lg:gap-x-24 md:gap-x-12 sm:gap-x-6 gap-y-10;
-}
-
-.regular-bg {
-  @apply bg-white dark:bg-light_black;
-}
-
-.regular-container {
-  @apply h-auto w-full flex flex-col items-center;
-}
-
-.regular-container-no-center {
-  @apply flex flex-col h-auto w-full;
-}
-
-.subtitle {
-  @apply text-light_black dark:text-medium_gray font-medium text-lg;
-}
-
-.label {
-  @apply text-light_black dark:text-medium_gray font-medium tracking-wide text-base;
-}
-
-.input {
-  @apply border-2 p-2 h-10 border-medium_gray rounded-none;
-}
-
-.send-btn {
-  @apply dark:hover:bg-gray hover:bg-gray hover:text-white transition duration-200 bg-transparent_gray dark:bg-transparent_gray text-light_black dark:text-white;
 }

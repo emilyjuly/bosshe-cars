@@ -1,9 +1,21 @@
 <template>
   <transition name="toast">
-    <div v-if="message" :class="['toast', typeClass, 'notification']">
-      <div class="flex w-auto items-center transparent">
-        <Icon name="heroicons:bell-alert-16-solid" class="mr-2 transparent" />
-        <p class="transparent">{{ message }}</p>
+    <div
+      v-if="message"
+      :class="[
+        'toast',
+        typeClass,
+        'fixed bottom-0 z-30 flex flex-col items-center px-4 px-6 py-4 font-medium tracking-wide',
+      ]"
+    >
+      <div
+        class="flex w-auto items-center bg-transparent text-base dark:bg-transparent"
+      >
+        <Icon
+          name="heroicons:bell-alert-16-solid"
+          class="mr-2 bg-transparent dark:bg-transparent"
+        />
+        <p class="bg-transparent dark:bg-transparent">{{ message }}</p>
       </div>
     </div>
   </transition>
@@ -44,23 +56,30 @@ const typeClass = computed(() => {
   opacity: 0;
 }
 
-.notification {
-  @apply tracking-wide font-medium px-6 py-4 fixed z-30 bottom-0 px-4 flex flex-col items-center;
-}
-
-.transparent {
-  @apply dark:bg-transparent bg-transparent text-base;
-}
-
 .success {
-  @apply bg-green-600 dark:bg-green-600 dark:text-white;
+  background-color: #34d399; /* bg-green-600 */
+  color: #fff; /* dark:text-white */
 }
 
 .error {
-  @apply bg-red-500 dark:bg-red-500 dark:text-white;
+  background-color: #ef4444; /* bg-red-500 */
+  color: #fff; /* dark:text-white */
 }
 
 .info {
-  @apply bg-blue-500 dark:bg-blue-500 dark:text-white;
+  background-color: #3b82f6; /* bg-blue-500 */
+  color: #fff; /* dark:text-white */
+}
+
+.dark .success {
+  background-color: #34d399; /* dark:bg-green-600 */
+}
+
+.dark .error {
+  background-color: #ef4444; /* dark:bg-red-500 */
+}
+
+.dark .info {
+  background-color: #3b82f6; /* dark:bg-blue-500 */
 }
 </style>

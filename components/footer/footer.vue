@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col mt-24">
+  <div class="mt-24 flex flex-col">
     <div
-      class="flex flex-col xl:flex-row lg:flex-row md:flex-row sm:flex-row xl:justify-between lg:justify-between md:justify-between sm:justify-between regular-bg w-full px-5 py-10"
+      class="flex w-full flex-col bg-transparent px-5 py-10 dark:bg-transparent sm:flex-row sm:justify-between md:flex-row md:justify-between lg:flex-row lg:justify-between xl:flex-row xl:justify-between"
     >
       <div>
         <template v-if="colorMode.preference === 'light'">
@@ -39,39 +39,45 @@
             </svg>
           </a>
         </template>
-        <p class="text-color-gray font-light mt-2">
+        <p class="mt-2 font-light text-light_black dark:text-light_gray">
           Confiança, qualidade e inovação
         </p>
       </div>
-      <div class="flex mt-10 flex-col text-color-gray font-light">
+      <div
+        class="mt-10 flex flex-col font-light text-light_black dark:text-light_gray"
+      >
         <p class="mb-2">Redes Sociais</p>
         <template v-for="(item, index) in mediaItems" :key="index">
           <p class="mb-2">
             <Icon :name="item.icon" />
             <a
               href="#"
-              class="ml-1 hover:text-medium_gray dark:hover:text-white regular-transition"
+              class="ml-1 transition duration-300 hover:text-medium_gray dark:hover:text-white"
               >{{ item.name }}</a
             >
           </p>
         </template>
       </div>
-      <div class="flex mt-3 flex-col text-color-gray font-light">
+      <div
+        class="mt-3 flex flex-col font-light text-light_black dark:text-light_gray"
+      >
         <p class="mb-4">Ajuda</p>
         <p class="mb-2">
           <Icon name="mdi:whatsapp" />
           <a
             href="#"
-            class="ml-1 hover:text-medium_gray dark:hover:text-white regular-transition"
+            class="ml-1 transition duration-300 hover:text-medium_gray dark:hover:text-white"
           >
             Fale Conosco
           </a>
         </p>
       </div>
     </div>
-    <div class="h-0.5 dark:bg-transparent_gray bg-light_black mx-5"></div>
+    <div class="mx-5 h-0.5 bg-light_black dark:bg-transparent_gray"></div>
     <div>
-      <p class="font-light text-color-gray text-xs py-4 px-5">
+      <p
+        class="px-5 py-4 text-xs font-light text-light_black dark:text-light_gray"
+      >
         ©2024 All rights reserved
       </p>
     </div>

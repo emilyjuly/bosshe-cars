@@ -1,19 +1,24 @@
 <template>
-  <div class="regular-container">
-    <p class="subtitle px-3 text-center mt-20">
+  <div class="flex h-auto w-full flex-col items-center">
+    <p class="subtitle mt-20 px-3 text-center">
       Preencha seus dados, e entraremos em contato
     </p>
-    <div class="flex flex-col px-5 gap-y-12 label mt-16 xl:w-1/2 lg:w-1/2">
+    <div
+      class="mt-16 flex flex-col gap-y-12 px-5 text-base font-medium tracking-wide text-light_black dark:text-medium_gray lg:w-1/2 xl:w-1/2"
+    >
       <div class="flex flex-col gap-2">
         <label for="fullname">* NOME COMPLETO</label>
         <InputText
           id="fullname"
           v-model="formData.fullname.value"
           aria-label="Nome completo"
-          class="input"
+          class="h-10 rounded-none border-2 border-medium_gray p-2"
           @focusout="check('fullname')"
         />
-        <p class="error-text" v-show="formData.fullname.error !== ''">
+        <p
+          class="text-sm text-red-600 dark:text-red-300"
+          v-show="formData.fullname.error !== ''"
+        >
           {{ formData.fullname.error }}
         </p>
       </div>
@@ -24,12 +29,15 @@
           id="phone"
           v-model="formData.phone.value"
           aria-label="Número de contato"
-          class="input"
+          class="h-10 rounded-none border-2 border-medium_gray p-2"
           mask="(99) 99999-9999"
           placeholder="(99) 99999-9999"
           @focusout="check('phone')"
         />
-        <p class="error-text" v-show="formData.phone.error !== ''">
+        <p
+          class="text-sm text-red-600 dark:text-red-300"
+          v-show="formData.phone.error !== ''"
+        >
           {{ formData.phone.error }}
         </p>
       </div>
@@ -54,12 +62,15 @@
             id="cpf"
             v-model="formData.cpf.value"
             aria-label="CPF"
-            class="input"
+            class="h-10 rounded-none border-2 border-medium_gray p-2"
             mask="999.999.999-99"
             placeholder="999.999.999-99"
             @focusout="check('cpf')"
           />
-          <p class="error-text" v-show="formData.cpf.error !== ''">
+          <p
+            class="text-sm text-red-600 dark:text-red-300"
+            v-show="formData.cpf.error !== ''"
+          >
             {{ formData.cpf.error }}
           </p>
         </div>
@@ -70,7 +81,7 @@
             id="valor_entrada"
             v-model="formData.valorEntrada.value"
             aria-label="valorEntrada"
-            class="input"
+            class="h-10 rounded-none border-2 border-medium_gray p-2"
             placeholder="R$"
           />
         </div>
@@ -95,7 +106,7 @@
       </a>
 
       <button
-        class="tracking-wider send-btn mt-1 px-5 py-2 w-56 self-center xl:self-end lg:self-end md:self-end sm:self-end"
+        class="mt-1 w-56 self-center bg-transparent_gray px-5 py-2 tracking-wider text-light_black transition duration-200 hover:bg-gray hover:text-white dark:bg-transparent_gray dark:text-white dark:hover:bg-gray sm:self-end md:self-end lg:self-end xl:self-end"
         @click="validateForm"
       >
         <template v-if="loading">
@@ -113,7 +124,7 @@
           </div>
         </template>
         <template v-else>
-          <span class="text-base font-bold dark:bg-transparent bg-transparent">
+          <span class="bg-transparent text-base font-bold dark:bg-transparent">
             ENVIAR
           </span>
         </template>
@@ -229,11 +240,22 @@ const validateForm = async () => {
 }
 
 .checkbox-custom:checked {
-  @apply dark:bg-white bg-beige border-white;
+  border-color: #c5ac94; /* border-white */
+  background-color: #c5ac94; /* bg-beige */
+}
+
+.checkbox-custom:checked.dark {
+  background-color: #ececec; /* dark:bg-white */
 }
 
 .checkbox-custom:hover {
-  @apply cursor-pointer transition duration-300 border-beige dark:border-white;
+  cursor: pointer;
+  border-color: #c5ac94; /* border-beige */
+  transition-duration: 300ms; /* transition duration-300 */
+}
+
+.checkbox-custom:hover.dark {
+  border-color: #ececec; /* dark:border-white */
 }
 
 .checkbox-custom::before {

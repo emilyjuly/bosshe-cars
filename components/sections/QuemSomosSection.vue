@@ -1,10 +1,10 @@
 <template>
-  <div class="flex-col w-full regular-bg">
+  <div class="w-full flex-col bg-white dark:bg-light_black">
     <div
-      class="h-auto xl:h-72 lg:h-72 md:h-72 sm:h-72 p-10 flex w-full justify-between"
+      class="flex h-auto w-full justify-between p-10 sm:h-72 md:h-72 lg:h-72 xl:h-72"
     >
       <img
-        class="w-10 xl:w-20 lg:w-20 md:w-16 sm:w-16"
+        class="w-10 sm:w-16 md:w-16 lg:w-20 xl:w-20"
         v-for="marca in marcas"
         :src="marca.src"
         :alt="`Símbolo da ${marca.name}`"
@@ -12,36 +12,64 @@
       />
     </div>
     <div
-      class="flex flex-col xl:flex-row lg:flex-row md:flex-row sm:flex-row justify-center xl:justify-between lg:justify-between md:justify-between sm:justify-between"
+      class="flex flex-col justify-center sm:flex-row sm:justify-between md:flex-row md:justify-between lg:flex-row lg:justify-between xl:flex-row xl:justify-between"
     >
-      <div class="flex flex-col xl:w-1/2 lg:w-1/2 md:w-1/2 sm:w-1/2">
+      <div class="flex flex-col sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2">
         <div
-          class="flex justify-between px-4 xl:px-24 lg:px-16 md:px-16 sm:px-16 items-center text-color mb-5"
+          class="mb-5 flex items-center justify-between px-4 text-light_black dark:text-white sm:px-16 md:px-16 lg:px-16 xl:px-24"
         >
-          <div class="flex-col-center">
-            <p class="regular-title">20+</p>
-            <p class="regular-subtitle">MODELOS</p>
+          <div class="flex flex-col items-center justify-center">
+            <p
+              class="text-xl font-bold tracking-wide sm:text-lg md:text-xl lg:text-2xl xl:text-3xl"
+            >
+              20+
+            </p>
+            <p
+              class="text-base font-semibold sm:text-xs md:text-xs lg:text-sm xl:text-lg"
+            >
+              MODELOS
+            </p>
           </div>
 
-          <div class="w-0.5 h-10 -translate-x-2/4 regular-bg-gray"></div>
+          <div
+            class="h-10 w-0.5 -translate-x-2/4 bg-light_black dark:bg-light_gray"
+          ></div>
 
-          <div class="flex-col-center">
-            <p class="regular-title">10000+</p>
-            <p class="regular-subtitle">CLIENTES</p>
+          <div class="flex flex-col items-center justify-center">
+            <p
+              class="text-xl font-bold tracking-wide sm:text-lg md:text-xl lg:text-2xl xl:text-3xl"
+            >
+              10000+
+            </p>
+            <p
+              class="text-base font-semibold sm:text-xs md:text-xs lg:text-sm xl:text-lg"
+            >
+              CLIENTES
+            </p>
           </div>
 
-          <div class="w-0.5 h-10 -translate-x-2/4 regular-bg-gray"></div>
+          <div
+            class="h-10 w-0.5 -translate-x-2/4 bg-light_black dark:bg-light_gray"
+          ></div>
 
-          <div class="flex-col-center">
-            <p class="regular-title">10+</p>
-            <p class="regular-subtitle">MARCAS</p>
+          <div class="flex flex-col items-center justify-center">
+            <p
+              class="text-xl font-bold tracking-wide sm:text-lg md:text-xl lg:text-2xl xl:text-3xl"
+            >
+              10+
+            </p>
+            <p
+              class="text-base font-semibold sm:text-xs md:text-xs lg:text-sm xl:text-lg"
+            >
+              MARCAS
+            </p>
           </div>
         </div>
         <div
-          class="flex flex-col justify-center xl:justify-start lg:justify-start md:justify-start sm:justify-start items-center xl:items-start lg:items-start md:items-start sm:items-start xl:pl-24 lg:pl-12 md:pl-12 sm:pl-12 xl:pt-12 lg:pt-12 md:pt-12 sm:pt-12"
+          class="flex flex-col items-center justify-center sm:items-start sm:justify-start sm:pl-12 sm:pt-12 md:items-start md:justify-start md:pl-12 md:pt-12 lg:items-start lg:justify-start lg:pl-12 lg:pt-12 xl:items-start xl:justify-start xl:pl-24 xl:pt-12"
         >
           <p
-            class="text-color-gray text-center xl:text-left lg:text-left md:text-left sm:text-left text-xl lg:text-lg md:text-lg sm:text-sm lg:w-80 md:w-80 sm:w-72 w-72 leading-10"
+            class="w-72 text-center text-xl leading-10 text-light_black dark:text-light_gray sm:w-72 sm:text-left sm:text-sm md:w-80 md:text-left md:text-lg lg:w-80 lg:text-left lg:text-lg xl:text-left"
           >
             Há duas décadas, somos referência em Vale Verde. Oferecemos os
             melhores carros importados e os últimos modelos, incluindo
@@ -49,7 +77,7 @@
             facilitado. Descubra a qualidade que você merece.
           </p>
           <span
-            class="flex items-center gap-2 text-color text-base font-semibold mt-10"
+            class="mt-10 flex items-center gap-2 text-base font-semibold text-light_black dark:text-white"
           >
             <Icon name="heroicons:map-pin-16-solid" />
             <span>Vila Verde, Avenida das Estrelas, 23.</span>
@@ -57,10 +85,10 @@
         </div>
       </div>
       <div
-        class="regular-bg xl:dark:bg-white lg:dark:bg-white md:dark:bg-white sm:dark:bg-white lg:w-1/2 md:w-1/2 sm:w-1/2"
+        class="bg-white dark:bg-light_black sm:w-1/2 sm:dark:bg-white md:w-1/2 md:dark:bg-white lg:w-1/2 lg:dark:bg-white xl:dark:bg-white"
       >
         <img
-          class="dark:bg-transparent bg-transparent xl:relative lg:relative md:relative sm:relative xl:top-20 lg:top-20 md:top-20 sm:top-10 xl:right-80 lg:right-40 md:right-24 sm:right-24"
+          class="bg-transparent dark:bg-transparent sm:relative sm:right-24 sm:top-10 md:relative md:right-24 md:top-20 lg:relative lg:right-40 lg:top-20 xl:relative xl:right-80 xl:top-20"
           src="../../assets/images/renault-kwid.svg"
           alt="Renault Kwid Elétrico"
         />
