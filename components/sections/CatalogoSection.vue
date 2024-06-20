@@ -4,12 +4,88 @@
   >
     <p
       class="text-xl font-bold tracking-wide text-light_black dark:text-white sm:text-lg md:text-xl lg:text-2xl xl:text-3xl"
+      v-if="props.showTitle"
     >
       NOSSA COLEÇÃO DE CARROS
     </p>
-    <p class="mt-2 text-center text-sm text-light_black dark:text-white">
+    <p
+      class="mt-2 text-center text-sm text-light_black dark:text-white"
+      v-if="props.showTitle"
+    >
       Explore e Descubra Nossa Exclusiva Coleção de Carros!
     </p>
+    <div
+      class="mt-6 flex flex-col gap-y-5 text-black dark:text-light_gray sm:w-1/2 md:w-1/2 lg:w-1/2 xl:w-1/2"
+      v-if="!props.showTitle"
+    >
+      <span class="flex flex-col">
+        <label for="carName">* NOME</label>
+        <InputText
+          id="carName"
+          v-model="formData.name"
+          aria-label="Nome do Carro"
+          class="h-10 rounded-none border-2 border-medium_gray p-2"
+        />
+      </span>
+
+      <span class="flex flex-col">
+        <label for="price">* PREÇO</label>
+        <InputText
+          id="price"
+          v-model="formData.price"
+          aria-label="Preço do Carro"
+          class="h-10 rounded-none border-2 border-medium_gray p-2"
+        />
+      </span>
+
+      <span class="flex flex-col">
+        <label for="category">* CATEGORIA</label>
+        <select
+          id="category"
+          v-model="formData.category"
+          class="h-10 rounded-none border-2 border-medium_gray p-2"
+        >
+          <option
+            v-for="category in categories"
+            :key="category.value"
+            :value="category.value"
+          >
+            {{ category.name }}
+          </option>
+        </select>
+      </span>
+
+      <span class="flex flex-col">
+        <label for="image">* IMAGEM</label>
+        <input id="image" type="file" @change="handleFileUpload" />
+      </span>
+
+      <p class="self-end text-black dark:text-light_gray">
+        * Indica que o campo é obrigatório.
+      </p>
+
+      <button
+        class="mt-1 border-2 border-solid border-beige bg-transparent px-5 py-2 text-xs font-bold tracking-wider text-light_black transition duration-200 hover:bg-beige hover:text-light_black dark:border-beige dark:bg-transparent dark:text-white dark:hover:bg-beige dark:hover:text-light_black"
+        @click="addNewCar"
+      >
+        ADICIONAR CARRO
+      </button>
+    </div>
+    <div class="mb-10 mt-10 flex w-80 justify-center" v-if="showTitle">
+      <div class="relative flex w-full items-center">
+        <input
+          type="text"
+          id="search"
+          v-model="search"
+          aria-label="Pesquisar"
+          placeholder="Pesquise um carro"
+          class="flex h-10 w-full rounded-none border-2 border-medium_gray p-2 text-gray dark:text-light_gray sm:w-80 md:w-80 lg:w-80 xl:w-80"
+        />
+        <span class="absolute right-3 flex items-center pl-3">
+          <i class="pi pi-search text-medium_gray"></i>
+        </span>
+      </div>
+    </div>
     <TabView
       class="tabview-custom mt-5 flex flex-col items-center justify-center"
       v-model:activeIndex="activeTab"
@@ -25,10 +101,31 @@
         </template>
         <div
           class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 sm:gap-x-6 md:grid-cols-3 md:gap-x-12 lg:grid-cols-3 lg:gap-x-24 xl:grid-cols-3 xl:gap-x-24"
+          v-if="filteredCars.length"
         >
           <template v-for="car in filteredCars" :key="car.name">
-            <CarCard :image="car.image" :price="car.price" :name="car.name" />
+            <CarCard
+              :image="car.image"
+              :price="car.price"
+              :name="car.name"
+              :showDeleteButton="showDeleteButton"
+              :category="tab.toLowerCase()"
+            />
           </template>
+        </div>
+        <div
+          class="mb-32 mt-32 flex w-full flex-col justify-center gap-y-10 text-center"
+          v-else
+        >
+          <Icon
+            name="heroicons:exclamation-circle"
+            class="flex self-center text-gray dark:text-light_gray"
+            size="64px"
+          />
+          <p class="text-xl text-gray dark:text-light_gray">
+            Não achamos o modelo que você procura. <br />Tente buscar em outra
+            categoria, ou entre em contato conosco através do formulário abaixo.
+          </p>
         </div>
       </TabPanel>
     </TabView>
@@ -40,49 +137,109 @@
 import { ref, computed } from "vue";
 import CarCard from "~/components/cards/CarCard.vue";
 import { useShopCartStore } from "~/stores/ShopCart";
+import { useNotificationStore } from "~/stores/Notification";
 import ShopCartBtn from "~/components/buttons/ShopCartBtn.vue";
-import axios from "axios";
-import type { CarCategories } from "~/types/types";
+import { useCatalogoStore } from "~/stores/Catalogo";
+import type { CarInfo, FormDataCar } from "~/types/types";
+
+const props = defineProps<{
+  showTitle: boolean;
+}>();
 
 const tabs = ref(["SUV", "SEDAN", "HATCH", "4 X 4"]);
+const categories = [
+  { name: "SUV", value: "suv" },
+  { name: "4 X 4", value: "4x4" },
+  { name: "HATCH", value: "hatch" },
+  { name: "SEDAN", value: "sedan" },
+];
 const activeTab = ref(0);
 const store = useShopCartStore();
+const notificationStore = useNotificationStore();
+const fileInput = ref<HTMLInputElement | null>(null);
+const catalogoStore = useCatalogoStore();
+const search = ref<string>("");
+const showDeleteButton = props.showTitle ? false : true;
+const formDataDefault: FormDataCar = {
+  name: "",
+  price: "",
+  image: "",
+  category: "",
+};
 
-const cars = ref<CarCategories>({ suv: [], sedan: [], hatch: [], "4x4": [] });
-
-async function fetchData(): Promise<void> {
-  try {
-    const response = await axios.get(
-      "https://gist.githubusercontent.com/emilyjuly/70a7511f112fb070d31015e00fad1f6e/raw/5260ec0fbc4078d586df14f99f4fa8fe28c88bfa/catalogo.json",
+const formData = ref<FormDataCar>({ ...formDataDefault });
+const addNewCar = async () => {
+  if (
+    formData.value.name === "" ||
+    formData.value.price === "" ||
+    formData.value.category === "" ||
+    !fileInput.value
+  ) {
+    notificationStore.showNotification(
+      "Preencha todos os campos obrigatórios.",
+      "error",
     );
-    cars.value = response.data;
-  } catch (error) {
-    console.error("Erro ao carregar catálogo de carros:", error);
+    return;
   }
+
+  if (fileInput.value && fileInput.value.files) {
+    const file = fileInput.value.files[0];
+    formData.value.image = await catalogoStore.uploadImage(
+      file,
+      formData.value.category,
+    );
+    catalogoStore.addNewCar(formData.value.category, {
+      name: formData.value.name,
+      price: formData.value.price,
+      image: formData.value.image,
+    });
+  }
+};
+
+function handleFileUpload(event: Event) {
+  const input = event.target as HTMLInputElement;
+  fileInput.value = input;
 }
 
-fetchData();
-
 const filteredCars = computed(() => {
+  const searchTerm = search.value.toLowerCase();
+  let filteredCarsByCategory: CarInfo[] = [];
+
   switch (tabs.value[activeTab.value]) {
     case "SUV":
-      return cars.value.suv;
+      filteredCarsByCategory = catalogoStore.cars.suv;
+      break;
     case "SEDAN":
-      return cars.value.sedan;
+      filteredCarsByCategory = catalogoStore.cars.sedan;
+      break;
     case "HATCH":
-      return cars.value.hatch;
+      filteredCarsByCategory = catalogoStore.cars.hatch;
+      break;
     case "4 X 4":
-      return cars.value["4x4"];
+      filteredCarsByCategory = catalogoStore.cars["4x4"];
+      break;
     default:
-      return [];
+      filteredCarsByCategory = [];
   }
+
+  if (searchTerm) {
+    return filteredCarsByCategory.filter((car) =>
+      car.name.toLowerCase().includes(searchTerm),
+    );
+  }
+
+  return filteredCarsByCategory;
+});
+
+onMounted(() => {
+  catalogoStore.getCars();
 });
 </script>
 
 <style scoped>
 .active {
   border-bottom-width: 2px;
-  font-weight: 500;
+  font-weight: 600;
   color: black;
 }
 

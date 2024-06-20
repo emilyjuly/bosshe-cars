@@ -58,17 +58,20 @@ const typeClass = computed(() => {
 
 .success {
   background-color: #34d399; /* bg-green-600 */
-  color: #fff; /* dark:text-white */
+  color: #000; /* dark:text-white */
+  font-weight: 600;
 }
 
 .error {
   background-color: #ef4444; /* bg-red-500 */
   color: #fff; /* dark:text-white */
+  font-weight: 600;
 }
 
 .info {
   background-color: #3b82f6; /* bg-blue-500 */
-  color: #fff; /* dark:text-white */
+  color: #000; /* dark:text-white */
+  font-weight: 600;
 }
 
 .dark .success {

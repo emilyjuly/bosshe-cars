@@ -15,6 +15,7 @@ export type FormDataProp<T> = {
 export type FormData = {
   fullname: FormDataProp<string>;
   phone: FormDataProp<string>;
+  message: FormDataProp<string>;
   simular: FormDataProp<boolean>;
   cpf: FormDataProp<string>;
   valorEntrada: FormDataProp<number | string>;
@@ -32,4 +33,11 @@ export type CarCategories = {
   sedan: CarInfo[];
   hatch: CarInfo[];
   "4x4": CarInfo[];
+};
+
+export type FormDataCar = {
+  price: string;
+  name: string;
+  image: string;
+  category: string;
 };

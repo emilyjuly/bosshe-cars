@@ -5,11 +5,14 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export default defineEventHandler(async (event) => {
   try {
     const body = await readBody(event);
-    const { fullname, phone, simular, cpf, valorEntrada, cnh } = body;
+    const { fullname, phone, message, simular, cpf, valorEntrada, cnh, cars } =
+      body;
 
     const emailContent = `
             <strong>Nome Completo:</strong> ${fullname} <br>
             <strong>Contato:</strong> ${phone} <br>
+            <strong>Mensagem:</strong> ${message} <br>
+            <strong>Produtos selecionados:</strong> ${cars} <br>
             ${simular ? `<strong>Simular Financiamento:</strong> ${simular ? "Sim" : "Não"} <br>` : ""}
             ${simular ? `<strong>CPF:</strong> ${cpf} <br>` : ""}
             ${simular ? `<strong>Valor de Entrada:</strong> ${valorEntrada} <br>` : ""}

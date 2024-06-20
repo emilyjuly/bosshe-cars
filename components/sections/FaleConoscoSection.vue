@@ -1,6 +1,6 @@
 <template>
   <div class="flex h-auto w-full flex-col items-center">
-    <p class="subtitle mt-20 px-3 text-center">
+    <p class="subtitle mt-20 px-3 text-center text-black dark:text-light_gray">
       Preencha seus dados, e entraremos em contato
     </p>
     <div
@@ -40,6 +40,19 @@
         >
           {{ formData.phone.error }}
         </p>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label for="message">MENSAGEM</label>
+        <Textarea
+          id="message"
+          v-model="formData.message.value"
+          aria-label="Mensagem"
+          class="rounded-none border-2 border-medium_gray p-2"
+          rows="5"
+          cols="30"
+          placeholder="Digite aqui uma mensagem se desejar"
+        />
       </div>
 
       <div class="flex items-center">
@@ -135,7 +148,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import type { FormData } from "~/types/types";
+import type { CarInfo, FormData } from "~/types/types";
 import { useNotificationStore } from "~/stores/Notification";
 import { useShopCartStore } from "~/stores/ShopCart";
 
@@ -147,6 +160,7 @@ const storeShop = useShopCartStore();
 const formDataDefault: FormData = {
   fullname: { value: "", error: "" },
   phone: { value: "", error: "" },
+  message: { value: "", error: "" },
   simular: { value: false, error: "" },
   cpf: { value: "", error: "" },
   valorEntrada: { value: "", error: "" },
@@ -180,6 +194,12 @@ const validateForm = async () => {
     );
   } else {
     try {
+      const cars: string[] = [];
+      if (storeShop.shopCart.length) {
+        storeShop.shopCart.map((car: CarInfo) => {
+          cars.push(car.name);
+        });
+      }
       loading.value = true;
       const response = await fetch("/api/send", {
         method: "POST",
@@ -189,10 +209,12 @@ const validateForm = async () => {
         body: JSON.stringify({
           fullname: formData.value.fullname.value,
           phone: formData.value.phone.value,
+          message: formData.value.message.value,
           simular: formData.value.simular.value,
           cpf: formData.value.cpf.value,
           valorEntrada: formData.value.valorEntrada.value,
           cnh: formData.value.cnh.value,
+          cars: cars,
         }),
       });
 

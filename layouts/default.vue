@@ -136,6 +136,13 @@ const menuItems: MenuItem[] = [
 
 const scrollToSection = (href: string) => {
   const section = document.querySelector(href);
+  const route = useRoute();
+  const router = useRouter();
+
+  if (route.path === "/ADMIN") {
+    router.push(`/${href}`);
+  }
+
   if (section) {
     activeSection.value = section.id;
     section.scrollIntoView({ behavior: "smooth" });

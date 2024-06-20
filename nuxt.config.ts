@@ -24,4 +24,12 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  runtimeConfig: {
+    public: {
+      REPO_OWNER: process.env.REPO_OWNER,
+      REPO_NAME: process.env.REPO_NAME,
+      ACCESS_TOKEN: process.env.ACCESS_TOKEN,
+      GIST_ID: process.env.GIST_ID,
+    },
+  },
 });

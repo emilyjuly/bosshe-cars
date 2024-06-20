@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col w-full">
+  <div class="flex w-full flex-col">
     <section id="inicio">
       <HomeSection />
     </section>
@@ -7,7 +7,7 @@
       <QuemSomosSection />
     </section>
     <section class="flex flex-col" id="catalogo">
-      <CatalogoSection />
+      <CatalogoSection showTitle />
     </section>
     <section class="flex flex-col" id="fale-conosco">
       <FaleConoscoSection />
