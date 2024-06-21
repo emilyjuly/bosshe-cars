@@ -139,7 +139,7 @@ const scrollToSection = (href: string) => {
   const route = useRoute();
   const router = useRouter();
 
-  if (route.path === "/ADMIN") {
+  if (route.path === "/admin") {
     router.replace(`/${href}`);
   }
 
