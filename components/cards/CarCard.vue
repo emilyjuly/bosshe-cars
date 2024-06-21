@@ -11,22 +11,25 @@
         @load="onLoad"
       />
     </div>
-    <div class="flex justify-between text-lg font-semibold">
-      <div class="flex">
-        <span class="mr-1 text-beige dark:text-beige">R$</span>
-        <span class="text-light_black dark:text-white">{{ price }}</span>
+    <div class="flex items-end justify-between">
+      <div class="flex flex-col">
+        <div class="flex text-lg font-semibold">
+          <span class="mr-1 text-beige dark:text-beige">R$</span>
+          <span class="text-light_black dark:text-white">{{ price }}</span>
+        </div>
+        <p class="text-sm tracking-wide text-gray dark:text-medium_gray">
+          {{ name }}
+        </p>
       </div>
       <Icon
         v-if="showDeleteButton"
-        name="heroicons:trash-16-solid"
-        class="mt-auto cursor-pointer text-2xl text-black dark:bg-transparent dark:text-white"
+        name="heroicons:trash"
+        class="cursor-pointer text-2xl text-black dark:bg-transparent dark:text-white"
         @click="confirmDelete"
       />
     </div>
-    <p class="text-sm tracking-wide text-gray dark:text-medium_gray">
-      {{ name }}
-    </p>
     <button
+      v-if="!showDeleteButton"
       class="mt-1 w-full border-2 border-solid border-beige bg-transparent px-5 py-2 text-xs font-bold tracking-wider text-light_black transition duration-200 hover:bg-beige hover:text-light_black dark:border-beige dark:bg-transparent dark:text-white dark:hover:bg-beige dark:hover:text-light_black"
       @click="addToCart"
     >
@@ -92,8 +95,8 @@ import type { CarInfo } from "~/types/types";
 const storeShop = useShopCartStore();
 const storeNotification = useNotificationStore();
 const storeCatalogo = useCatalogoStore();
-const loading = ref(true);
-const showModal = ref(false);
+const loading = ref<boolean>(true);
+const showModal = ref<boolean>(false);
 
 const addToCart = () => {
   const carInfo: CarInfo = {
@@ -123,8 +126,8 @@ const confirmDelete = () => {
   showModal.value = true;
 };
 
-const deleteCar = () => {
-  storeCatalogo.deleteCar(props.category, props.name);
+const deleteCar = async () => {
+  await storeCatalogo.deleteCar(props.category, props.name);
   showModal.value = false;
 };
 

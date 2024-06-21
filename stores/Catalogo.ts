@@ -135,10 +135,14 @@ export const useCatalogoStore = defineStore("catalogo", {
       });
     },
     async deleteCar(category: string, carName: string): Promise<void> {
+      console.log(category, carName);
+
       if (this.cars[category]) {
         const carToRemove: CarInfo = this.cars[category].filter(
           (car: CarInfo) => car.name === carName,
         );
+
+        console.log(carToRemove);
 
         if (carToRemove) {
           const imageUrl = carToRemove[0].image;

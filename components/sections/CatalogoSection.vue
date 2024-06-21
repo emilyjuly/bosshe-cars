@@ -80,7 +80,7 @@
         class="mt-1 border-2 border-solid border-beige bg-transparent px-5 py-2 text-xs font-bold tracking-wider text-light_black transition duration-200 hover:bg-beige hover:text-light_black dark:border-beige dark:bg-transparent dark:text-white dark:hover:bg-beige dark:hover:text-light_black"
         @click="addNewCar"
       >
-        ADICIONAR CARRO
+        {{ loading ? "CARREGANDO..." : "ADICIONAR CARRO" }}
       </button>
     </div>
     <div class="mb-10 mt-10 flex w-80 justify-center" v-if="showTitle">
@@ -121,7 +121,7 @@
               :price="car.price"
               :name="car.name"
               :showDeleteButton="showDeleteButton"
-              :category="tab.toLowerCase()"
+              :category="tab === '4 X 4' ? '4x4' : tab.toLowerCase()"
             />
           </template>
         </div>
@@ -171,6 +171,7 @@ const notificationStore = useNotificationStore();
 const fileInput = ref<HTMLInputElement | null>(null);
 const catalogoStore = useCatalogoStore();
 const search = ref<string>("");
+const loading = ref<boolean>(false);
 const imagePreview = ref<string | null>(null);
 const showDeleteButton = props.showTitle ? false : true;
 const formDataDefault: FormDataCar = {
@@ -182,6 +183,7 @@ const formDataDefault: FormDataCar = {
 
 const formData = ref<FormDataCar>({ ...formDataDefault });
 const addNewCar = async () => {
+  loading.value = true;
   if (
     formData.value.name === "" ||
     formData.value.price === "" ||
@@ -201,12 +203,14 @@ const addNewCar = async () => {
       file,
       formData.value.category,
     );
-    catalogoStore.addNewCar(formData.value.category, {
+    await catalogoStore.addNewCar(formData.value.category, {
       name: formData.value.name,
       price: formData.value.price,
       image: formData.value.image,
     });
     formData.value = { ...formDataDefault };
+    imagePreview.value = null;
+    loading.value = false;
   }
 };
 

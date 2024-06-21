@@ -12,8 +12,8 @@
         class="flex w-auto items-center bg-transparent text-base dark:bg-transparent"
       >
         <Icon
-          name="heroicons:bell-alert-16-solid"
-          class="mr-2 bg-transparent dark:bg-transparent"
+          name="heroicons:bell-alert"
+          class="mr-2 bg-transparent text-xl dark:bg-transparent"
         />
         <p class="bg-transparent dark:bg-transparent">{{ message }}</p>
       </div>
