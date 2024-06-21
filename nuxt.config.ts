@@ -7,6 +7,11 @@ export default defineNuxtConfig({
     "nuxt-primevue",
     "@pinia/nuxt",
   ],
+  app: {
+    head: {
+      link: [{ rel: "icon", type: "image/png", href: "/favicon.ico" }],
+    },
+  },
   primevue: {
     usePrimeVue: true,
   },
