@@ -55,6 +55,18 @@
         </select>
       </span>
 
+      <div
+        v-if="imagePreview"
+        class="flex h-96 w-96 items-center overflow-hidden"
+      >
+        <img
+          class="max-h-full max-w-full object-cover"
+          v-if="imagePreview"
+          :src="imagePreview"
+          alt="Image Preview"
+        />
+      </div>
+
       <span class="flex flex-col">
         <label for="image">* IMAGEM</label>
         <input id="image" type="file" @change="handleFileUpload" />
@@ -159,6 +171,7 @@ const notificationStore = useNotificationStore();
 const fileInput = ref<HTMLInputElement | null>(null);
 const catalogoStore = useCatalogoStore();
 const search = ref<string>("");
+const imagePreview = ref<string | null>(null);
 const showDeleteButton = props.showTitle ? false : true;
 const formDataDefault: FormDataCar = {
   name: "",
@@ -193,12 +206,27 @@ const addNewCar = async () => {
       price: formData.value.price,
       image: formData.value.image,
     });
+    formData.value = { ...formDataDefault };
   }
 };
 
-function handleFileUpload(event: Event) {
+async function handleFileUpload(event: Event) {
   const input = event.target as HTMLInputElement;
   fileInput.value = input;
+  if (fileInput.value.files) {
+    imagePreview.value = await fileToBase64(fileInput.value.files[0]);
+  }
+}
+
+function fileToBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      resolve(reader.result as string);
+    };
+    reader.onerror = (error) => reject(error);
+  });
 }
 
 const filteredCars = computed(() => {

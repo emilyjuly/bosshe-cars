@@ -21,6 +21,7 @@ export default {
         transparent_beige: "rgba(197, 171, 148, 0.60)",
         beige: "#C5AC94",
         transparent_black: "rgba(24, 24, 24, 0.38)",
+        bg_modal: "rgba(0, 0, 0, 0.5)",
       },
       fontFamily: {
         sans: ["Roboto", "sans-serif"],

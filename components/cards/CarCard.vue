@@ -1,9 +1,16 @@
 <template>
   <div class="flex-col">
     <div v-if="loading" class="loading-container">
-      <Skeleton size="15rem"></Skeleton>
+      <Skeleton size="16rem"></Skeleton>
     </div>
-    <img v-show="!loading" :src="image" :alt="name" @load="onLoad" />
+    <div v-show="!loading" class="flex h-60 w-80 items-center overflow-hidden">
+      <img
+        class="h-full w-full object-cover"
+        :src="image"
+        :alt="name"
+        @load="onLoad"
+      />
+    </div>
     <div class="flex justify-between text-lg font-semibold">
       <div class="flex">
         <span class="mr-1 text-beige dark:text-beige">R$</span>
@@ -13,7 +20,7 @@
         v-if="showDeleteButton"
         name="heroicons:trash-16-solid"
         class="mt-auto cursor-pointer text-2xl text-black dark:bg-transparent dark:text-white"
-        @click="storeCatalogo.deleteCar(props.category, name)"
+        @click="confirmDelete"
       />
     </div>
     <p class="text-sm tracking-wide text-gray dark:text-medium_gray">
@@ -25,19 +32,68 @@
     >
       COMPRAR
     </button>
+
+    <div v-if="showModal" class="modal">
+      <div class="modal-content">
+        <div
+          class="flex h-60 w-96 items-center overflow-hidden border-2 border-beige"
+        >
+          <img
+            class="mb-4 h-full w-full object-cover"
+            :src="image"
+            :alt="name"
+            @load="onLoad"
+          />
+        </div>
+
+        <p class="bg-transparent text-lg dark:bg-transparent">
+          Você tem certeza que deseja excluir o carro <br />
+          <span
+            class="bg-transparent font-bold dark:bg-transparent dark:text-beige"
+            >{{ name }}?</span
+          >
+        </p>
+        <div
+          class="mt-10 flex w-full justify-between bg-transparent dark:bg-transparent"
+        >
+          <button
+            @click="deleteCar"
+            class="border-2 bg-transparent p-2 text-beige dark:bg-transparent"
+            title="Confirmar"
+          >
+            <Icon
+              class="bg-transparent text-3xl dark:bg-transparent"
+              name="heroicons:check-16-solid"
+            />
+          </button>
+          <button
+            @click="cancelDelete"
+            class="border-2 bg-transparent p-2 text-beige dark:bg-transparent"
+            title="Cancelar"
+          >
+            <Icon
+              class="bg-transparent text-3xl dark:bg-transparent"
+              name="heroicons:x-mark-16-solid"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import { useShopCartStore } from "~/stores/ShopCart";
 import { useNotificationStore } from "~/stores/Notification";
 import { useCatalogoStore } from "~/stores/Catalogo";
 import type { CarInfo } from "~/types/types";
-import CatalogoSection from "../sections/CatalogoSection.vue";
 
 const storeShop = useShopCartStore();
 const storeNotification = useNotificationStore();
 const storeCatalogo = useCatalogoStore();
+const loading = ref(true);
+const showModal = ref(false);
 
 const addToCart = () => {
   const carInfo: CarInfo = {
@@ -59,10 +115,22 @@ const addToCart = () => {
   }
 };
 
-const loading = ref(true);
-
 const onLoad = () => {
   loading.value = false;
+};
+
+const confirmDelete = () => {
+  showModal.value = true;
+};
+
+const deleteCar = () => {
+  storeCatalogo.deleteCar(props.category, props.name);
+  showModal.value = false;
+};
+
+const cancelDelete = () => {
+  showModal.value = false;
+  storeNotification.showNotification("O carro não foi excluído", "info");
 };
 
 const props = defineProps<{
@@ -73,3 +141,24 @@ const props = defineProps<{
   category: string;
 }>();
 </script>
+
+<style scoped>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  color: black;
+  padding: 40px;
+  text-align: center;
+}
+</style>
