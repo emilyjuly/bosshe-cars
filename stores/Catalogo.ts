@@ -64,7 +64,7 @@ export const useCatalogoStore = defineStore("catalogo", {
               "success",
             )
           : storeNotification.showNotification(
-              "Ação efetuada com sucesso, dentro de alguns segundos o carro será exlcuído!",
+              "Ação efetuada com sucesso, dentro de alguns segundos o carro será excluído!",
               "success",
             );
         await this.getCars();
