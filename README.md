@@ -36,6 +36,13 @@ Uma <b>landing page</b> para uma loja de carros, com a integração de um <b>for
 
 - <a href="https://www.linkedin.com/posts/emily-july_design-responsivo-com-tailwincss-activity-7207026367031394304-L8of?utm_source=share&utm_medium=member_desktop" target="_blank">Design Responsivo com TailwindCSS</a>
 
+## 💌 Modelo do email gerado pelo formulário de contato
+<div style="display: flex; justify-content: center">
+  
+  ![image](https://github.com/emilyjuly/bosshe-cars/assets/87674883/b561cade-cc2f-4e0b-bbd7-2dd86bf7bb94)
+
+</div>
+
 ## ✏️ Design System do projeto
 
 <div style="display: flex; justify-content: center">
