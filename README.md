@@ -5,7 +5,7 @@ Uma <b>landing page</b> para uma loja de carros, com a integração de um <b>for
 
 - <a href="https://bosshe-cars.vercel.app/" target="_blank">Acessar projeto</a>  <br/>
 - <a href="https://bosshe-cars.vercel.app/admin" target="_blank">Administração do projeto</a> <br/>
-- <a href="https://www.figma.com/proto/FjcrWBcyfgCGy6agQUYUnc/bosshe?node-id=1-2&t=82roogdAyTQwDBvm-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1" target="_blank">Protótipo do projeto</a>
+- <a href="https://www.figma.com/design/FjcrWBcyfgCGy6agQUYUnc/bosshe?node-id=0-1&t=aGS54w3944BOrDNy-1" target="_blank">Protótipo do projeto</a>
 
 ## ⚙️ Estrutura
 
