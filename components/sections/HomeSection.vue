@@ -16,7 +16,7 @@
         alt="Palavras sobre a imagem do carro"
       />
       <p
-        class="dark:text-white-gray text-center text-lg font-medium tracking-wide text-light_black sm:absolute sm:bottom-6 sm:px-5 sm:text-sm md:absolute md:bottom-6 md:px-5 md:text-sm lg:absolute lg:bottom-10 lg:px-5 lg:text-xl xl:absolute xl:bottom-10 xl:px-5 xl:text-xl"
+        class="text-center text-lg font-medium tracking-wide text-light_black dark:text-light_gray sm:absolute sm:bottom-6 sm:px-5 sm:text-sm md:absolute md:bottom-6 md:px-5 md:text-sm lg:absolute lg:bottom-10 lg:px-5 lg:text-xl xl:absolute xl:bottom-10 xl:px-5 xl:text-xl"
       >
         Trabalhamos com as melhores marcas do mercado automotivo para oferecer
         uma excelente experiência a todos os nossos clientes
